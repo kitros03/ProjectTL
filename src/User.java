@@ -2,16 +2,21 @@
 import java.util.ArrayList;
 
 public class User {
-    private int user_ID = 0;
-    private String f_name, l_name, username, email, password, address;
+    private int user_id = 0;
+    private String f_name;
+    private String l_name;
+    private String username;
+    private String email;
+    private String password;
+    private String address;
     private long phone_number;
 
     ArrayList<User> userList = new ArrayList<>();
 
     public User(){};
 
-    public User(int user_ID, String f_name, String l_name, String username, String email, String password, long phone_number, String address) {
-        this.user_ID = user_ID;
+    public User(int user_id, String f_name, String l_name, String username, String email, String password, long phone_number, String address) {
+        this.user_id = user_id;
         this.f_name = f_name;
         this.l_name = l_name;
         this.username = username;
@@ -21,67 +26,67 @@ public class User {
         this.address = address;
     }
 
-    public int getUser_ID() {
-        return user_ID;
+    public int getuser_id() {
+        return user_id;
     }
 
-    public void setUser_ID(int user_ID) {
-        this.user_ID = user_ID;
+    public void setuser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public String getFirstname() {
+    public String getfirstname() {
         return f_name;
     }
 
-    public void setFirstname(String f_name) {
+    public void setfirstname(String f_name) {
         this.f_name = f_name;
     }
 
-    public String getLastname() {
+    public String getlastname() {
         return l_name;
     }
 
-    public void setLastname(String l_name) {
+    public void setlastname(String l_name) {
         this.l_name = l_name;
     }
 
-    public String getUsername() {
+    public String getusername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setusername(String username) {
         this.username = username;
     }
 
-    public String getEmail() {
+    public String getemail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setemail(String email) {
         this.email = email;
     }
 
-    public String getPassword() {
+    public String getpassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setpassword(String password) {
         this.password = password;
     }
 
-    public long getPhone_number() {
+    public long getphone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(long phone_number) {
+    public void setphone_number(long phone_number) {
         this.phone_number = phone_number;
     }
 
-    public String getAddress() {
+    public String getaddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setaddress(String address) {
         this.address = address;
     }
 

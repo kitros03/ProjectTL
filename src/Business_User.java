@@ -1,5 +1,5 @@
 public class Business_User {
-    private int busness_id = 0;
+    private int business_id = 0;
     private String business_name;
     private int postal_code;
     private String email;
