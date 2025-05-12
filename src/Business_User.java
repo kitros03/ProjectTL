@@ -11,7 +11,7 @@ public class Business_User {
     public Business_User(){};
 
     public Business_User(int business_id, String business_name, int postal_code, String email, String address, long phone_no, long tax_id, String password){
-        this.busness_id = business_id;
+        this.business_id = business_id;
         this.business_name = business_name;
         this.postal_code = postal_code;
         this.email = email;
@@ -22,7 +22,7 @@ public class Business_User {
     }
 
     public int getbusiness_id(){
-        return  busness_id;
+        return  business_id;
     }
 
     public String getbusiness_name(){
