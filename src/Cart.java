@@ -42,6 +42,6 @@ public class Cart {
         this.service_id = service_id;
         this.business_id = business_id;
         this.user_id = user_id;
-        this.price = price;
+        this.service_price = service_price;
     }
 }

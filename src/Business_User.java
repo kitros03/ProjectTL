@@ -54,7 +54,7 @@ public class Business_User {
     }
 
     public void setbusiness_id(int business_id){
-        this.busness_id = business_id;
+        this.business_id = business_id;
     }
 
     public void setbusiness_name(String business_name){
