@@ -1,4 +1,4 @@
-public class Offers extends Services {
+public class Offer extends Services {
     private int service_id;
     private String service_name;
     private String service_description;
