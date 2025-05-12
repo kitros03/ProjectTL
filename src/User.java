@@ -9,13 +9,13 @@ public class User {
     private String email;
     private String password;
     private String address;
-    private long phone_number;
+    private String phone_number;
 
     ArrayList<User> userList = new ArrayList<>();
 
     public User(){};
 
-    public User(int user_id, String f_name, String l_name, String username, String email, String password, long phone_number, String address) {
+    public User(int user_id, String f_name, String l_name, String username, String email, String password, String phone_number, String address) {
         this.user_id = user_id;
         this.f_name = f_name;
         this.l_name = l_name;
@@ -74,11 +74,11 @@ public class User {
         this.password = password;
     }
 
-    public long getphone_number() {
+    public String getphone_number() {
         return phone_number;
     }
 
-    public void setphone_number(long phone_number) {
+    public void setphone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
