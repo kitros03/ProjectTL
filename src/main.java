@@ -1,5 +1,5 @@
-public class Main{
-    public static void main(String[] args){
+public class main{
+    public static void Main(String[] args){
 
         Services serv = new Services();
         Cart cart =  new Cart();

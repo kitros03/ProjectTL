@@ -36,16 +36,16 @@ public class Menu {
 
     public int getuser_info(String username, String password) {
 
-        for (Company_User bussinesuserE : find_gym.companyList) {
-            if (bussinesuserE.getcompany_name().equals(username) && bussinesuserE.getpassword().equals(password)) {
-                int companyid = bussinesuserE.getcompany_id();
-                String companyname = bussinesuserE.getcompany_name();
-                String companyemail = bussinesuserE.getemail();
-                String companyaddress = bussinesuserE.getaddress();
-                long companyphone = bussinesuserE.getphone_no();
-                int companypostalcode =   bussinesuserE.getpostal_code();
-                long companytaxid = bussinesuserE.gettax_id();
-                bussinesuserE = new Company_User(companyid, companyname, companypostalcode, companyemail, companyaddress, companyphone, companytaxid, password);
+        for (Company_User companyuserE : find_gym.companyList) {
+            if (companyuserE.getcompany_name().equals(username) && companyuserE.getpassword().equals(password)) {
+                int companyid = companyuserE.getcompany_id();
+                String companyname = companyuserE.getcompany_name();
+                String companyemail = companyuserE.getemail();
+                String companyaddress = companyuserE.getaddress();
+                long companyphone = companyuserE.getphone_no();
+                int companypostalcode =   companyuserE.getpostal_code();
+                long companytaxid = companyuserE.gettax_id();
+                companyuserE = new Company_User(companyid, companyname, companypostalcode, companyemail, companyaddress, companyphone, companytaxid, password);
                 return 1;
             }
         }
