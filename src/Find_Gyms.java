@@ -1,20 +1,20 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Find_Gym {
+public class Find_Gyms {
     String name = "Find Gym";
     User user;
-    Business_User b_user;
+    Company_User c_user;
     Services serv;
     ArrayList<Services> servicesList = new ArrayList<>();
-    ArrayList<Business_User> businessList = new ArrayList<>();
+    ArrayList<Company_User> companyList = new ArrayList<>();
     ArrayList<User> userList = new ArrayList<>();
-    ArrayList<String> businessNameList = new ArrayList<>();
+    ArrayList<String> companyNameList = new ArrayList<>();
     ArrayList<String> serviceCategoryList = new ArrayList<>();
     ArrayList<String> serviceNameList = new ArrayList<>();
     ArrayList<Favourites> favouritesList = new ArrayList<>();
     ArrayList<Cart> cartList = new ArrayList<>();
-    ArrayList<Digital_Card> digitalCardList = new ArrayList<>();
+    ArrayList<My_Codes> digitalCardList = new ArrayList<>();
 
     public void findGym() {
         Scanner scanner = new Scanner(System.in);
@@ -22,9 +22,9 @@ public class Find_Gym {
         String gymName = scanner.nextLine();
         boolean found = false;
 
-        for (Business_User business : businessList) {
-            if (business.getbusiness_name().equalsIgnoreCase(gymName)) {
-                System.out.println("Gym found: " + business.getbusiness_name());
+        for (Company_User company : companyList) {
+            if (company.getcompany_name().equalsIgnoreCase(gymName)) {
+                System.out.println("Gym found: " + company.getcompany_name());
                 found = true;
                 break;
             }
@@ -36,18 +36,18 @@ public class Find_Gym {
     
     }
 
-    public void addbusiness(Business_User business) {
+    public void addcompany(Company_User company) {
         try{
-            if(businessList.contains(business)){
-                System.out.println("Business already exists");
+            if(companyList.contains(company)){
+                System.out.println("company already exists");
         }
         else{
-            businessList.add(business);
-            System.out.println("Business added successfully");
+            companyList.add(company);
+            System.out.println("company added successfully");
         }
         }
         catch(Exception e){
-            System.out.println("Error adding business: " + e.getMessage());
+            System.out.println("Error adding company: " + e.getMessage());
         }
     }
 
@@ -109,11 +109,11 @@ public class Find_Gym {
             if (service.getservice_category().equals(search))
                 showServiceInfo(search);
         }
-        for (Business_User buser : businessList) {
-            if (search.equals(buser.getbusiness_name())) {
-                showBuserInfo(search);
+        for (Company_User cuser : companyList) {
+            if (search.equals(cuser.getcompany_name())) {
+                showcuserInfo(search);
                 System.out.println();
-                showBusinessServices(search);
+                showcompanyServices(search);
             }
         }
     }
@@ -128,23 +128,23 @@ public class Find_Gym {
         }
     }
 
-    public void showBuserInfo(String businessName) {
-        for (Business_User buser : businessList) {
-            if (buser.getbusiness_name().equals(businessName)) {
-                System.out.println("Business Name: " + buser.getbusiness_name());
-                System.out.println("Business ID: " + buser.getbusiness_id());
-                System.out.println("Business Address: " + buser.getaddress());
-                System.out.println("Business Phone: " + buser.getphone_no());
+    public void showcuserInfo(String companyName) {
+        for (Company_User cuser : companyList) {
+            if (cuser.getcompany_name().equals(companyName)) {
+                System.out.println("company Name: " + cuser.getcompany_name());
+                System.out.println("company ID: " + cuser.getcompany_id());
+                System.out.println("company Address: " + cuser.getaddress());
+                System.out.println("company Phone: " + cuser.getphone_no());
             }
         }
     }
 
-    public void showBusinessServices(String businessName) {
-        for (Business_User buser : businessList) {
-            if (buser.getbusiness_name().equals(businessName)) {
-                System.out.println("Services offered by " + buser.getbusiness_name() + ":");
+    public void showcompanyServices(String companyName) {
+        for (Company_User cuser : companyList) {
+            if (cuser.getcompany_name().equals(companyName)) {
+                System.out.println("Services offered by " + cuser.getcompany_name() + ":");
                 for (Services service : servicesList) {
-                    if (service.getbusiness_id() == buser.getbusiness_id()) {
+                    if (service.getcompany_id() == cuser.getcompany_id()) {
                         System.out.println("- " + service.getservice_name());
                     }
                 }
@@ -152,22 +152,22 @@ public class Find_Gym {
         }
     }
 
-    public void addToFavourites(String serviceName, int userId, String businessName) {
+    public void addToFavourites(String serviceName, int userId, String companyName) {
         boolean found = false;      
-        for (Business_User business : businessList) {
-            if (business.getbusiness_name().equals(businessName)) {
+        for (Company_User company : companyList) {
+            if (company.getcompany_name().equals(companyName)) {
                 found = true;
                 break;
             }
         }
         Favourites fav = new Favourites();
         for (Services service : servicesList) {
-            if (service.getservice_name().equals(serviceName) && service.getbusiness_name().equals(businessName)) {
+            if (service.getservice_name().equals(serviceName) && service.getcompany_name().equals(companyName)) {
                 fav.setservice_name(service.getservice_name());
                 fav.setservice_price(service.getservice_price());
                 fav.setservice_category(service.getservice_category());
                 fav.setservice_id(service.getservice_id());
-                fav.setbusiness_id(service.getbusiness_id());
+                fav.setcompany_id(service.getcompany_id());
                 fav.setuser_id(userId);
                 break;
             }
@@ -195,23 +195,23 @@ public class Find_Gym {
         }
     }
 
-    public void addToCart(String serviceName, int userId, String businessName) {
+    public void addToCart(String serviceName, int userId, String companyName) {
         boolean found = false;      
-        for (Business_User business : businessList) {
-            if (business.getbusiness_name().equals(businessName)) {
+        for (Company_User company : companyList) {
+            if (company.getcompany_name().equals(companyName)) {
                 found = true;
                 break;
             }
             else {
-                System.out.println("Business not found.");
+                System.out.println("company not found.");
                 return;
             }
         }
         for(Services service : servicesList) {
-            if (service.getservice_name().equals(serviceName) && service.getbusiness_name().equals(businessName)) {
+            if (service.getservice_name().equals(serviceName) && service.getcompany_name().equals(companyName)) {
                 Cart cart = new Cart();
                 cart.setservice_id(service.getservice_id());
-                cart.setbusiness_id(service.getbusiness_id());
+                cart.setcompany_id(service.getcompany_id());
                 cart.setuser_id(userId);
                 cart.setprice(service.getservice_price());
                 System.out.println("Service added to cart: " + service.getservice_name());
@@ -229,7 +229,7 @@ public class Find_Gym {
         for (Cart cart : cartList) {
             if (cart.getuser_id() == userId) {
                 System.out.println("- Service ID: " + cart.getservice_id());
-                System.out.println("- Business ID: " + cart.getbusiness_id());
+                System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
             }
         }
@@ -240,7 +240,7 @@ public class Find_Gym {
         for (Cart cart : cartList) {
             if (cart.getuser_id() == userId) {
                 System.out.println("- Service ID: " + cart.getservice_id());
-                System.out.println("- Business ID: " + cart.getbusiness_id());
+                System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
             }
         }

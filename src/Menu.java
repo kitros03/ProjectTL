@@ -3,19 +3,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-    Find_Gym find_gym;
-    Business_User b_user;
+    Find_Gyms find_gym;
+    Company_User c_user;
     Services services;
     User user;
-    private int business_id = 0, user_id = 0, service_id = 0;
+    private int company_id = 0, user_id = 0, service_id = 0;
 
     
-    public int getbusiness_id() {
-        return business_id;
+    public int getcompany_id() {
+        return company_id;
     }
 
-    public void setbusiness_id(int business_id) {
-        this.business_id = business_id;
+    public void setcompany_id(int company_id) {
+        this.company_id = company_id;
     }
 
     public int getuser_id() {
@@ -36,16 +36,16 @@ public class Menu {
 
     public int getuser_info(String username, String password) {
 
-        for (Business_User bussinesuserE : find_gym.businessList) {
-            if (bussinesuserE.getbusiness_name().equals(username) && bussinesuserE.getpassword().equals(password)) {
-                int businessid = bussinesuserE.getbusiness_id();
-                String businessname = bussinesuserE.getbusiness_name();
-                String businessemail = bussinesuserE.getemail();
-                String businessaddress = bussinesuserE.getaddress();
-                long businessphone = bussinesuserE.getphone_no();
-                int businesspostalcode =   bussinesuserE.getpostal_code();
-                long businesstaxid = bussinesuserE.gettax_id();
-                bussinesuserE = new Business_User(businessid, businessname, businesspostalcode, businessemail, businessaddress, businessphone, businesstaxid, password);
+        for (Company_User bussinesuserE : find_gym.companyList) {
+            if (bussinesuserE.getcompany_name().equals(username) && bussinesuserE.getpassword().equals(password)) {
+                int companyid = bussinesuserE.getcompany_id();
+                String companyname = bussinesuserE.getcompany_name();
+                String companyemail = bussinesuserE.getemail();
+                String companyaddress = bussinesuserE.getaddress();
+                long companyphone = bussinesuserE.getphone_no();
+                int companypostalcode =   bussinesuserE.getpostal_code();
+                long companytaxid = bussinesuserE.gettax_id();
+                bussinesuserE = new Company_User(companyid, companyname, companypostalcode, companyemail, companyaddress, companyphone, companytaxid, password);
                 return 1;
             }
         }
@@ -65,9 +65,9 @@ public class Menu {
         return 0;
     }
 
-    public void newbusiness_user_info() {
+    public void newCompany_User_info() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Creating your business account...");
+        System.out.println("Creating your company account...");
         System.out.println("Give your gym's name:");
         String name = scan.nextLine();
         System.out.println("Give your address");
@@ -83,9 +83,9 @@ public class Menu {
         System.out.println("Password:");
         String password = scan.nextLine();
         System.out.println("Repeat Password:");
-        b_user = new Business_User(this.business_id, name, postal_code, email, address, phone_number, tax_id, password);
-        find_gym.addbusiness(b_user);
-        this.business_id++;
+        c_user = new Company_User(this.company_id, name, postal_code, email, address, phone_number, tax_id, password);
+        find_gym.addcompany(c_user);
+        this.company_id++;
     }
 
     public void newuser_info() {
@@ -102,7 +102,7 @@ public class Menu {
         this.user_id++;
     }
 
-    public void menu(Find_Gym find_gym) {
+    public void menu(Find_Gyms find_gym) {
         this.find_gym = find_gym;
     }
 
@@ -127,12 +127,12 @@ public class Menu {
             flag = false;
             for (Services services : find_gym.servicesList) {
                 if (service_name.equals(services.getservice_name())) {
-                    services = new Services(b_user.getbusiness_id(), services.getservice_id(), service_name, service_price, service_category);
+                    services = new Services(c_user.getcompany_id(), services.getservice_id(), service_name, service_price, service_category);
                     flag = true;
                 }
             }
             if (!flag) {
-                services = new Services(b_user.getbusiness_id(), this.service_id, service_name, service_price, service_category);
+                services = new Services(c_user.getcompany_id(), this.service_id, service_name, service_price, service_category);
                 this.service_id++;
             }
             newservices_list.add(services);
@@ -165,7 +165,7 @@ public class Menu {
             int acc = getuser_info(username, password);
             if (acc == 1) {
                 while (flag == false) {
-                    System.out.println("Welcome " + b_user.getbusiness_name() + " to GYMHUB");
+                    System.out.println("Welcome " + c_user.getcompany_name() + " to GYMHUB");
                     System.out.println("-------------------------------");
                     System.out.println("1.Find Gyms");
                     System.out.println("2.Services");
@@ -266,7 +266,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    find_gym.showBuserInfo(b_user.getbusiness_name());
+                                    find_gym.showcuserInfo(c_user.getcompany_name());
                                     System.out.println("1. Edit Profile");
                                     System.out.println("2. Go back");
                                     System.out.println();
@@ -279,16 +279,16 @@ public class Menu {
                                         if (edit.equals("Name")) {
                                             System.out.println("Give new Name:");
                                             String name = scan.nextLine();
-                                            for (Business_User bUser : find_gym.businessList ){
-                                                if (bUser.getbusiness_id() == b_user.getbusiness_id())
-                                                    bUser.setbusiness_name(name);
+                                            for (Company_User bUser : find_gym.companyList ){
+                                                if (bUser.getcompany_id() == c_user.getcompany_id())
+                                                    bUser.setcompany_name(name);
                                             }
                                         }
                                         if (edit.equals("Address")) {
                                             System.out.println("Give new Address:");
                                             String address = scan.nextLine();
-                                            for (Business_User bUser : find_gym.businessList ){
-                                                if (bUser.getbusiness_id() == b_user.getbusiness_id())
+                                            for (Company_User bUser : find_gym.companyList ){
+                                                if (bUser.getcompany_id() == c_user.getcompany_id())
                                                     bUser.setaddress(address);
                                             }
                                         }
@@ -297,15 +297,15 @@ public class Menu {
                                             System.out.println("Give new Phone Number:");
                                             long phone = scan.nextInt();
                                             scan.nextLine();
-                                            for (Business_User bUser : find_gym.businessList ){
-                                                if (bUser.getbusiness_id() == b_user.getbusiness_id())
+                                            for (Company_User bUser : find_gym.companyList ){
+                                                if (bUser.getcompany_id() == c_user.getcompany_id())
                                                     bUser.setphone_no(phone);
                                         }
                                         if (edit.equals("Email")){
                                             System.out.println("Give new Email:");
                                             String email = scan.nextLine();
-                                            for (Business_User bUser : find_gym.businessList ){
-                                                if (bUser.getbusiness_id() == b_user.getbusiness_id())
+                                            for (Company_User bUser : find_gym.companyList ){
+                                                if (bUser.getcompany_id() == c_user.getcompany_id())
                                                     bUser.setemail(email);
                                             }
                                         }
@@ -330,7 +330,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    find_gym.OrderHistory(b_user.getbusiness_id());
+                                    find_gym.OrderHistory(c_user.getcompany_id());
                                     System.out.println("1. Go Back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
@@ -483,20 +483,20 @@ public class Menu {
                                     if (check == 1){
                                         System.out.println("Name of the gym the service belongs to:");
                                         String pharm = scan.nextLine();
-                                        int businessID = -1;
+                                        int companyID = -1;
                                         int serviceID = -1;
-                                        for (Business_User gym_user : find_gym.businessList){
-                                            if (gym_user.getbusiness_name().equals(pharm))
-                                                businessID = gym_user.getbusiness_id();
+                                        for (Company_User gym_user : find_gym.companyList){
+                                            if (gym_user.getcompany_name().equals(pharm))
+                                                companyID = gym_user.getcompany_id();
                                         }
                                         System.out.println("Name of the service you want to delete:");
                                         String servString = scan.nextLine();
                                         List<Favourites> removeProductFromFavorite = new ArrayList<>();
 
                                         for (Favourites favour1 : find_gym.favouritesList) {
-                                            if (user.getuser_id() == favour1.getuser_id() && favour1.getbusiness_id() == businessID) {
+                                            if (user.getuser_id() == favour1.getuser_id() && favour1.getcompany_id() == companyID) {
                                                 for (Services serv : find_gym.servicesList) {
-                                                    if (serv.getservice_name().equals(servString) && serv.getbusiness_id() == businessID) {
+                                                    if (serv.getservice_name().equals(servString) && serv.getcompany_id() == companyID) {
                                                         serviceID = serv.getservice_id();
                                                     }
                                                 }
@@ -551,20 +551,20 @@ public class Menu {
                                     if (check == 2){
                                         System.out.println("Name of the pharmacy you want to delete the product from:");
                                         String gym = scan.nextLine();
-                                        int businessID = -1;
+                                        int companyID = -1;
                                         int serviceID = -1;
-                                        for (Business_User gym_user : find_gym.businessList){
-                                            if (gym_user.getbusiness_name().equals(gym))
-                                                businessID = gym_user.getbusiness_id();
+                                        for (Company_User gym_user : find_gym.companyList){
+                                            if (gym_user.getcompany_name().equals(gym))
+                                                companyID = gym_user.getcompany_id();
                                         }
                                         System.out.println("Name of the product you want to delete:");
                                         String servString = scan.nextLine();
                                         List<Cart> removeServiceFromCart = new ArrayList<>();
 
                                         for (Cart cart1 : find_gym.cartList) {
-                                            if (user.getuser_id() == cart1.getuser_id() && cart1.getbusiness_id() == businessID) {
+                                            if (user.getuser_id() == cart1.getuser_id() && cart1.getcompany_id() == companyID) {
                                                 for (Services serv : find_gym.servicesList) {
-                                                    if (serv.getservice_name().equals(servString) && serv.getbusiness_id() == businessID) {
+                                                    if (serv.getservice_name().equals(servString) && serv.getcompany_id() == companyID) {
                                                         serviceID = serv.getservice_id();
                                                     }
                                                 }
@@ -605,7 +605,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    find_gym.showUserProfile(user.getuser_id());
+                                    find_gym.showuserProfile(user.getuser_id());
                                     System.out.println("1. Edit Profile");
                                     System.out.println("2. Go back");
                                     System.out.println("Choose an option (Give number)");
@@ -679,7 +679,7 @@ public class Menu {
         } else if (sign == 2) {
             int creatingAccount = 0;
             while (creatingAccount != 1 && creatingAccount != 2) {
-                System.out.println("1. Create a business account.");
+                System.out.println("1. Create a company account.");
                 System.out.println("2. Create a customer account");
                 creatingAccount = scan.nextInt();
                 scan.nextLine();
@@ -687,9 +687,9 @@ public class Menu {
                     System.out.println("Choose a valid option");
             }
             if (creatingAccount == 1) {
-                newbusiness_user_info();
+                newCompany_User_info();
                 while (flag == false) {
-                    System.out.println("Welcome " + b_user.getbusiness_name() + " to GymHub!");
+                    System.out.println("Welcome " + c_user.getcompany_name() + " to GymHub!");
                     System.out.println("-------------------------------");
                     System.out.println("1.Search or Show categories");
                     System.out.println("2.Add service");
@@ -701,7 +701,6 @@ public class Menu {
                     int insert;
                     insert = scan.nextInt();
 
-                    //
 ///
 /// ////
 /// /               Stin 333 grammi en exume order history mesto find_gym. 
@@ -729,11 +728,11 @@ public class Menu {
                                 int case1 = scan.nextInt();
                                 scan.nextLine();
                                 if (case1 == 1){
-                                    eshop.search();
+                                    find_gym.search();
                                 }
                                 else if (case1 == 2){
-                                    eshop.showCategories();
-                                    System.out.println("1. Find products for a category");
+                                    find_gym.showCategories();
+                                    System.out.println("1. Find services for a category");
                                     System.out.println("2. Go back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
@@ -743,18 +742,18 @@ public class Menu {
                                         System.out.println("Give the category you are interested in: (Give Name)");
                                         String category = scan.nextLine();
                                         System.out.println();
-                                        eshop.showCategoryProducts(category);
-                                        System.out.println("1. Get info for a product");
+                                        find_gym.showCategoryServices(category);
+                                        System.out.println("1. Get info for a service");
                                         System.out.println("2. Go back:");
                                         System.out.println();
                                         System.out.println("Choose an option: (Give number)");
                                         check = scan.nextInt();
                                         scan.nextLine();
                                         if (check == 1){
-                                            System.out.println("Give the product you are interested in: (Give Name)");
-                                            String product = scan.nextLine();
+                                            System.out.println("Give the service you are interested in: (Give Name)");
+                                            String serviceString = scan.nextLine();
                                             System.out.println();
-                                            eshop.showProductInfo(product);
+                                            find_gym.showServiceInfo(serviceString);
                                             System.out.println("1. Go back");
                                             System.out.println();
                                             System.out.println("Choose an option: (Give number)");
@@ -778,7 +777,7 @@ public class Menu {
 
                         case 2:
                             back = false;
-                            System.out.println("1. Add products");
+                            System.out.println("1. Add services");
                             System.out.println("2. Go back");
                             System.out.println();
                             System.out.println("Choose an option: (Give number)");
@@ -787,8 +786,8 @@ public class Menu {
                             if (search == 2)
                                 break;
                             else {
-                                newProducts();
-                                System.out.println("Products added to your phamacy!");
+                                newservices();
+                                System.out.println("Services added to your page!");
                                 System.out.println();
                                 back = true;
                             }
@@ -807,7 +806,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    eshop.showPharmacyProfile(pharmacyUser.getPharmacy_ID());
+                                    find_gym.showcompanyProfile(c_user.getcompany_id());
                                     System.out.println("1. Edit Profile");
                                     System.out.println("2. Go back");
                                     System.out.println();
@@ -815,22 +814,22 @@ public class Menu {
                                     int check = scan.nextInt();
                                     scan.nextLine();
                                     if (check == 1){
-                                        System.out.println("What do you want to edit?   Give a String (Name, Address, Phone_Number, Email, Username)");
+                                        System.out.println("What do you want to edit?   Give a String (Name, Address, Phone_Number, Email)"); //ADD NEW
                                         String edit = scan.nextLine();
                                         if (edit.equals("Name")) {
                                             System.out.println("Give new Name:");
                                             String name = scan.nextLine();
-                                            for (Pharmacy_User puserr : eshop.pharmacyUserList ){
-                                                if (puserr.getPharmacy_ID() == pharmacyUser.getPharmacy_ID())
-                                                    puserr.setPharmacy_Name(name);
+                                            for (Company_User buser1 : find_gym.companyList ){
+                                                if (buser1.getcompany_id() == c_user.getcompany_id())
+                                                    buser1.setcompany_name(name);
                                             }
                                         }
                                         if (edit.equals("Address")) {
                                             System.out.println("Give new Address:");
                                             String address = scan.nextLine();
-                                            for (Pharmacy_User puserr : eshop.pharmacyUserList ){
-                                                if (puserr.getPharmacy_ID() == pharmacyUser.getPharmacy_ID())
-                                                    puserr.setAddress(address);
+                                            for (Company_User buser2 : find_gym.companyList){
+                                                if (buser2.getcompany_id() == c_user.getcompany_id())
+                                                    buser2.setaddress(address);
                                             }
                                         }
 
@@ -838,28 +837,19 @@ public class Menu {
                                             System.out.println("Give new Phone Number:");
                                             long phone = scan.nextInt();
                                             scan.nextLine();
-                                            for (Pharmacy_User puserr : eshop.pharmacyUserList ){
-                                                if (puserr.getPharmacy_ID() == pharmacyUser.getPharmacy_ID())
-                                                    puserr.setPhone_number(phone);
+                                            for (Company_User buser3 : find_gym.companyList ){
+                                                if (buser3.getcompany_id() == c_user.getcompany_id())
+                                                    buser3.setphone_no(phone);
                                             }
                                         }
                                         if (edit.equals("Email")){
                                             System.out.println("Give new Email:");
                                             String email = scan.nextLine();
-                                            for (Pharmacy_User puserr : eshop.pharmacyUserList ){
-                                                if (puserr.getPharmacy_ID() == pharmacyUser.getPharmacy_ID())
-                                                    puserr.setEmail(email);
+                                            for (Company_User buser4 : find_gym.companyList ){
+                                                if (buser4.getcompany_id() == c_user.getcompany_id())
+                                                    buser4.setemail(email);
                                             }
                                         }
-                                        if (edit.equals("Username") ){
-                                            System.out.println("Give new Username:");
-                                            String name = scan.nextLine();
-                                            for (Pharmacy_User puserr : eshop.pharmacyUserList ){
-                                                if (puserr.getPharmacy_ID() == pharmacyUser.getPharmacy_ID())
-                                                    puserr.setUsername(name);
-                                            }
-                                        }
-
                                     }
                                     if (check == 2) {
                                         back = true;
@@ -880,7 +870,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    eshop.OrderHistory(pharmacyUser.getPharmacy_ID());
+                                    find_gym.OrderHistory(c_user.getcompany_id());
                                     System.out.println("1. Go Back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
@@ -907,7 +897,7 @@ public class Menu {
                 newUserInfo();
                 while (flag == false) {
                     System.out.println();
-                    System.out.println("Welcome " + user.getFullname() + " to Galenus Pharmacy");
+                    System.out.println("Welcome " + user.getfirstname() + " " + user.getlastname() +" to Galenus Pharmacy");
                     System.out.println("------------------------");
                     System.out.println("1.Search categories");
                     System.out.println("2.Show categories");
@@ -933,7 +923,7 @@ public class Menu {
                                 int case1 = scan.nextInt();
                                 scan.nextLine();
                                 if (case1 == 1){
-                                    eshop.search();
+                                    find_gym.search();
                                 }
                                 else if (case1 == 2)
                                     back = true;
@@ -951,8 +941,8 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    eshop.showCategories();
-                                    System.out.println("1. Find products for a category");
+                                    find_gym.showCategories();
+                                    System.out.println("1. Find services for a category");
                                     System.out.println("2. Go back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
@@ -961,17 +951,17 @@ public class Menu {
                                     if (check == 1) {
                                         System.out.println("Give the category you are interested in: (Give name)");
                                         String category = scan.nextLine();
-                                        eshop.showCategoryProducts(category);
-                                        System.out.println("1. Get info for a product");
+                                        find_gym.showCategoryServices(category);
+                                        System.out.println("1. Get info for a service");
                                         System.out.println("2. Go back");
                                         System.out.println();
                                         System.out.println("Choose an option: (Give number)");
                                         check = scan.nextInt();
                                         scan.nextLine();
                                         if (check == 1) {
-                                            System.out.println("Give the product you are interested in: (Give name)");
+                                            System.out.println("Give the service you are interested in: (Give name)");
                                             String product = scan.nextLine();
-                                            eshop.showProductInfo(product);
+                                            find_gym.showProductInfo(product);
                                             System.out.println("1. Add Product to Favorites");
                                             System.out.println("2. Add Product to Shopping Cart");
                                             System.out.println("3. Go back");
