@@ -89,5 +89,4 @@ public class User {
     public void setaddress(String address) {
         this.address = address;
     }
-
 }

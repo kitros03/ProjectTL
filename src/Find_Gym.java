@@ -12,6 +12,9 @@ public class Find_Gym {
     ArrayList<String> businessNameList = new ArrayList<>();
     ArrayList<String> serviceCategoryList = new ArrayList<>();
     ArrayList<String> serviceNameList = new ArrayList<>();
+    ArrayList<Favourites> favouritesList = new ArrayList<>();
+    ArrayList<Cart> cartList = new ArrayList<>();
+    ArrayList<Digital_Card> digitalCardList = new ArrayList<>();
 
     public void findGym() {
         Scanner scanner = new Scanner(System.in);
@@ -145,6 +148,100 @@ public class Find_Gym {
                         System.out.println("- " + service.getservice_name());
                     }
                 }
+            }
+        }
+    }
+
+    public void addToFavourites(String serviceName, int userId, String businessName) {
+        boolean found = false;      
+        for (Business_User business : businessList) {
+            if (business.getbusiness_name().equals(businessName)) {
+                found = true;
+                break;
+            }
+        }
+        Favourites fav = new Favourites();
+        for (Services service : servicesList) {
+            if (service.getservice_name().equals(serviceName) && service.getbusiness_name().equals(businessName)) {
+                fav.setservice_name(service.getservice_name());
+                fav.setservice_price(service.getservice_price());
+                fav.setservice_category(service.getservice_category());
+                fav.setservice_id(service.getservice_id());
+                fav.setbusiness_id(service.getbusiness_id());
+                fav.setuser_id(userId);
+                break;
+            }
+        }
+        if (fav.getservice_name() == null) {
+            System.out.println("Service not found.");
+            return;
+        }
+        for (Favourites favourite : favouritesList) {
+            if (favourite.getservice_name().equals(fav.getservice_name()) && favourite.getuser_id() == userId) {
+                System.out.println("Service already in favourites.");
+                return;
+            }
+        }
+        favouritesList.add(fav);
+        System.out.println("Service added to favourites: " + fav.getservice_name());
+    }
+
+    public void showUserFavourites(int userId) {
+        System.out.println("Favourites for user ID " + userId + ":");
+        for (Favourites fav : favouritesList) {
+            if (fav.getuser_id() == userId) {
+                System.out.println("- " + fav.getservice_name());
+            }
+        }
+    }
+
+    public void addToCart(String serviceName, int userId, String businessName) {
+        boolean found = false;      
+        for (Business_User business : businessList) {
+            if (business.getbusiness_name().equals(businessName)) {
+                found = true;
+                break;
+            }
+            else {
+                System.out.println("Business not found.");
+                return;
+            }
+        }
+        for(Services service : servicesList) {
+            if (service.getservice_name().equals(serviceName) && service.getbusiness_name().equals(businessName)) {
+                Cart cart = new Cart();
+                cart.setservice_id(service.getservice_id());
+                cart.setbusiness_id(service.getbusiness_id());
+                cart.setuser_id(userId);
+                cart.setprice(service.getservice_price());
+                System.out.println("Service added to cart: " + service.getservice_name());
+                found = true;
+                return;
+            }
+        }
+        if (!found) {
+            System.out.println("Service not found.");
+        }
+    }
+
+    public void showCart(int userId) {
+        System.out.println("Cart for user ID " + userId + ":");
+        for (Cart cart : cartList) {
+            if (cart.getuser_id() == userId) {
+                System.out.println("- Service ID: " + cart.getservice_id());
+                System.out.println("- Business ID: " + cart.getbusiness_id());
+                System.out.println("- Price: " + cart.getprice());
+            }
+        }
+    }
+
+    public void completeOrder(int userId) {
+        System.out.println("Order completed for user ID " + userId);
+        for (Cart cart : cartList) {
+            if (cart.getuser_id() == userId) {
+                System.out.println("- Service ID: " + cart.getservice_id());
+                System.out.println("- Business ID: " + cart.getbusiness_id());
+                System.out.println("- Price: " + cart.getprice());
             }
         }
     }
