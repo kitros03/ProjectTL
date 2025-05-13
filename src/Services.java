@@ -1,23 +1,23 @@
 public class Services {
 
-    private int business_id;
+    private int company_id;
     private int service_id;
     private String service_name;
     private float service_price;
     private String service_category;
-    private String business_name;
+    private String company_name;
     public Services() {};
 
-    public Services(int business_id, int service_id, String service_name, float service_price, String service_category){
-        this.business_id = business_id;
+    public Services(int company_id, int service_id, String service_name, float service_price, String service_category){
+        this.company_id = company_id;
         this.service_category = service_category;
         this.service_id = service_id;
         this.service_name = service_name;
         this.service_price = service_price;
     }
 
-    public int getbusiness_id(){
-        return business_id;
+    public int getcompany_id(){
+        return company_id;
     }
 
     public int getservice_id(){
@@ -36,12 +36,12 @@ public class Services {
         return service_category;
     }
 
-    public String getbusiness_name(){
-        return business_name;
+    public String getcompany_name(){
+        return company_name;
     }
 
-    public void setbusiness_id(int business_id){
-        this.business_id = business_id;
+    public void setcompany_id(int company_id){
+        this.company_id = company_id;
     }
 
     public void setservice_id(int service_id){
@@ -60,7 +60,7 @@ public class Services {
         this.service_category = service_category;
     }
 
-    public void setbusiness_name(String business_name){
-        this.business_name = business_name;
+    public void setcompany_name(String company_name){
+        this.company_name = company_name;
     }
 }
