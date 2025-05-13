@@ -1,6 +1,6 @@
 public class Company_User {
-    private int company_id = 0;
-    private String company_name;
+    private int business_id = 0;
+    private String business_name;
     private int postal_code;
     private String email;
     private String address;
@@ -10,9 +10,9 @@ public class Company_User {
 
     public Company_User(){};
 
-    public Company_User(int company_id, String company_name, int postal_code, String email, String address, long phone_no, long tax_id, String password){
-        this.company_id = company_id;
-        this.company_name = company_name;
+    public Company_User(int business_id, String business_name, int postal_code, String email, String address, long phone_no, long tax_id, String password){
+        this.business_id = business_id;
+        this.business_name = business_name;
         this.postal_code = postal_code;
         this.email = email;
         this.address = address;
@@ -21,12 +21,12 @@ public class Company_User {
         this.password = password;
     }
 
-    public int getcompany_id(){
-        return  company_id;
+    public int getbusiness_id(){
+        return  business_id;
     }
 
-    public String getcompany_name(){
-        return company_name;
+    public String getbusiness_name(){
+        return business_name;
     }
 
     public int getpostal_code(){
@@ -53,12 +53,12 @@ public class Company_User {
         return password;
     }
 
-    public void setcompany_id(int company_id){
-        this.company_id = company_id;
+    public void setbusiness_id(int business_id){
+        this.business_id = business_id;
     }
 
-    public void setcompany_name(String company_name){
-        this.company_name = company_name;
+    public void setbusiness_name(String business_name){
+        this.business_name = business_name;
     }
 
     public void setpostal_code(int postal_code){
