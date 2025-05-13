@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Find_Gym {
+public class Find_Gyms {
     String name = "Find Gym";
     User user;
     Business_User b_user;
@@ -109,7 +109,7 @@ public class Find_Gym {
             if (service.getservice_category().equals(search))
                 showServiceInfo(search);
         }
-        for (Business_User buser : businessList) {
+        for (Company_User buser : businessList) {
             if (search.equals(buser.getbusiness_name())) {
                 showBuserInfo(search);
                 System.out.println();

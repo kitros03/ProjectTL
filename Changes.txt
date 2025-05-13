@@ -1,5 +1,5 @@
 Domain Model:
-Αλλαγές στην κλάση Announcments ώστε να είναι σύμφωνα με τα νεα mock-ups
+add variables and fuctions in the tables
 
 Code:
 Menu -> πρόσθεση extra Κώδικα για (επαναφορα κωδικού, help)
