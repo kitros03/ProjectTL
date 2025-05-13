@@ -348,27 +348,12 @@ public class Menu {
                             flag = true;
                             break;
                     }
-
-//
-///
-/// ////
-/// /               Stin 333 grammi en exume order history mesto find_gym. 
-///                 Sto edit profile pio panw allaxa ta onomata metavlitwn alla prepi na prosthesume j gia ta extra dika mas info
-/// /               prepei na prosthesoume kai to digitalcard
-/// /
-/// /
-/// /
-/// /
-/// /
-/// 
-
-
                 }
                 flag = true;
             } else if (acc == 2) {
                 while (flag == false) {
                     System.out.println();
-                    System.out.println("Welcome " + user.getfirstname() + " "+ user.getlastname() + " to Galenus Pharmacy");
+                    System.out.println("Welcome " + user.getfirstname() + " "+ user.getlastname() + " to GymHub!");
                     System.out.println("------------------------");
                     System.out.println("1.Search categories");
                     System.out.println("2.Show categories");
@@ -565,40 +550,40 @@ public class Menu {
                                         find_gym.OrderServices(user.getuser_id());
                                     if (check == 2){
                                         System.out.println("Name of the pharmacy you want to delete the product from:");
-                                        String pharm = scan.nextLine();
-                                        int pharmacyId = -1;
-                                        int productId = -1;
-                                        for (Pharmacy_User pharmacyy : eshop.pharmacyUserList){
-                                            if (pharmacyy.getPharmacy_Name().equals(pharm))
-                                                pharmacyId = pharmacyy.getPharmacy_ID();
+                                        String gym = scan.nextLine();
+                                        int businessID = -1;
+                                        int serviceID = -1;
+                                        for (Business_User gym_user : find_gym.businessList){
+                                            if (gym_user.getbusiness_name().equals(gym))
+                                                businessID = gym_user.getbusiness_id();
                                         }
                                         System.out.println("Name of the product you want to delete:");
-                                        String prod = scan.nextLine();
-                                        List<Cart> removeProductFromCart = new ArrayList<>();
+                                        String servString = scan.nextLine();
+                                        List<Cart> removeServiceFromCart = new ArrayList<>();
 
-                                        for (Cart cartt : eshop.cartList) {
-                                            if (user.getUser_ID() == cartt.getUser_ID() && cartt.getPharmacy_ID() == pharmacyId) {
-                                                for (Products prods : eshop.productsList) {
-                                                    if (prods.getProduct_Name().equals(prod) && prods.getPharmacy_ID() == pharmacyId) {
-                                                        productId = prods.getProduct_id();
+                                        for (Cart cart1 : find_gym.cartList) {
+                                            if (user.getuser_id() == cart1.getuser_id() && cart1.getbusiness_id() == businessID) {
+                                                for (Services serv : find_gym.servicesList) {
+                                                    if (serv.getservice_name().equals(servString) && serv.getbusiness_id() == businessID) {
+                                                        serviceID = serv.getservice_id();
                                                     }
                                                 }
-                                                if (cartt.getProduct_ID() == productId) {
-                                                    removeProductFromCart.add(cartt);
+                                                if (cart1.getservice_id() == serviceID) {
+                                                    removeServiceFromCart.add(cart1);
                                                 }
                                             }
                                         }
 
-                                        eshop.cartList.removeAll(removeProductFromCart);
+                                        find_gym.cartList.removeAll(removeServiceFromCart);
                                     }
                                     if (check == 3){
-                                        List<Cart> removeProductFromCart = new ArrayList<>();
-                                        for (Cart carttt : eshop.cartList) {
-                                            if (user.getUser_ID() == carttt.getUser_ID()) {
-                                                removeProductFromCart.add(carttt);
+                                        List<Cart> removeServiceFromCart = new ArrayList<>();
+                                        for (Cart cart2 : find_gym.cartList) {
+                                            if (user.getuser_id() == cart2.getuser_id()) {
+                                                removeServiceFromCart.add(cart2);
                                             }
                                         }
-                                        eshop.cartList.removeAll(removeProductFromCart);
+                                        find_gym.cartList.removeAll(removeServiceFromCart);
                                     }
 
                                     if (check == 4) {
@@ -620,7 +605,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    eshop.showUserProfile(user.getUser_ID());
+                                    find_gym.showUserProfile(user.getuser_id());
                                     System.out.println("1. Edit Profile");
                                     System.out.println("2. Go back");
                                     System.out.println("Choose an option (Give number)");
@@ -630,45 +615,50 @@ public class Menu {
                                         System.out.println("What do you want to edit?   Give a String (Name, Address, Phone_Number, Email, Username)");
                                         String edit = scan.nextLine();
                                         if (edit.equals("Name")) {
-                                            System.out.println("Give new Name:");
-                                            String name = scan.nextLine();
-                                            for (User userr : eshop.userList ){
-                                                if (user.getUser_ID() == userr.getUser_ID())
-                                                    userr.setFullname(name);
+                                            System.out.println("Give new First Name:");
+                                            String fname = scan.nextLine();
+                                            for (User user1 : find_gym.userList ){
+                                                if (user.getuser_id() == user1.getuser_id())
+                                                    user1.setfirstname(username);
                                             }
+                                            System.out.println("Give new Last Name:");
+                                            String lname = scan.nextLine();
+                                            for (User user1 : find_gym.userList ){
+                                                if (user.getuser_id() == user1.getuser_id())
+                                                    user1.setlastname(lname);
                                         }
                                         if (edit.equals("Address")) {
                                             System.out.println("Give new Address:");
                                             String address = scan.nextLine();
-                                            for (User userr : eshop.userList) {
-                                                if (user.getUser_ID() == userr.getUser_ID())
-                                                    userr.setAddress(address);
+                                            for (User user2 : find_gym.userList) {
+                                                if (user.getuser_id() == user2.getuser_id())
+                                                    user2.setaddress(address);
                                             }
                                         }
 
                                         if (edit.equals("Phone_Number")) {
                                             System.out.println("Give new Phone Number:");
-                                            long phone = scan.nextInt();
+                                            String phone = scan.nextLine();
                                             scan.nextLine();
-                                            for (User userr : eshop.userList ){
-                                                if (user.getUser_ID() == userr.getUser_ID())
-                                                    userr.setPhone_number(phone);
+                                            for (User user3 : find_gym.userList ){
+                                                if (user.getuser_id() == user3.getuser_id())
+                                                    user3.setphone_number(phone);
                                             }
                                         }
                                         if (edit.equals("Email")){
                                             System.out.println("Give new Email:");
                                             String email = scan.nextLine();
-                                            for (User userr : eshop.userList ){
-                                                if (user.getUser_ID() == userr.getUser_ID())
-                                                    userr.setEmail(email);
+                                            for (User user4 : find_gym.userList ){
+                                                if (user.getuser_id() == user4.getuser_id())
+                                                    user4.setemail(email);
                                             }
                                         }
                                         if (edit.equals("Username") ){
                                             System.out.println("Give new Username:");
-                                            String name = scan.nextLine();
-                                            for (User userr : eshop.userList ){
-                                                if (user.getUser_ID() == userr.getUser_ID())
-                                                    userr.setUsername(name);
+                                            String uname = scan.nextLine();
+                                            for (User user5 : find_gym.userList ){
+                                                if (user.getuser_id() == user5.getuser_id())
+                                                    user5.setusername(uname);
                                             }
                                         }
 
@@ -679,8 +669,7 @@ public class Menu {
                                 }
                             }
                             break;
-
-
+                        }
                         case 6:
                             flag = true;
                             break;
@@ -690,28 +679,43 @@ public class Menu {
         } else if (sign == 2) {
             int creatingAccount = 0;
             while (creatingAccount != 1 && creatingAccount != 2) {
-                System.out.println("1. Create a pharmacy account.");
-                System.out.println("2. Create a buyer account");
+                System.out.println("1. Create a business account.");
+                System.out.println("2. Create a customer account");
                 creatingAccount = scan.nextInt();
                 scan.nextLine();
                 if (creatingAccount != 1 && creatingAccount != 2)
                     System.out.println("Choose a valid option");
             }
             if (creatingAccount == 1) {
-                //return object Pharmacy user?
-                newPharmacyUserInfo();
+                newbusiness_user_info();
                 while (flag == false) {
-                    System.out.println("Welcome " + pharmacyUser.getPharmacy_Name() + " to Galenus Pharmacy");
+                    System.out.println("Welcome " + b_user.getbusiness_name() + " to GymHub!");
                     System.out.println("-------------------------------");
                     System.out.println("1.Search or Show categories");
-                    System.out.println("2.Add product");
+                    System.out.println("2.Add service");
                     System.out.println("3.Profile");
-                    System.out.println("4.Show history order");
+                    System.out.println("4.Show order history");
                     System.out.println("5.Exit");
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
                     int insert;
                     insert = scan.nextInt();
+
+                    //
+///
+/// ////
+/// /               Stin 333 grammi en exume order history mesto find_gym. 
+///                 Sto edit profile pio panw allaxa ta onomata metavlitwn alla prepi na prosthesume j gia ta extra dika mas info
+/// /               prepei na prosthesoume kai to digitalcard
+/// /               stin 550 kai 608 den exume tis methodous sto find_gym
+/// /               prepei na ginei announcement obj
+/// 
+/// /
+/// /
+/// /
+/// 
+
+
                     switch (insert) {
                         case 1:
                             back = false;
