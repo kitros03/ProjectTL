@@ -1,6 +1,6 @@
 public class Temp_Cart {
     double sum;
-    Business_User b_user = new Business_User();
+    Company_User c_user = new Company_User();
     Services services = new Services();
 
     public Temp_Cart() {}
@@ -13,12 +13,12 @@ public class Temp_Cart {
         this.sum = sum;
     }
 
-    public Business_User getb_user() {
-        return b_user;
+    public Company_User getc_user() {
+        return c_user;
     }
 
-    public void setb_user(Business_User b_user) {
-        this.b_user = b_user;
+    public void setc_user(Company_User c_user) {
+        this.c_user = c_user;
     }
 
     public Services getservices() {

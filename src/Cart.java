@@ -1,6 +1,6 @@
 public class Cart {
     private int service_id;
-    private int business_id;
+    private int company_id;
     private double service_price;
     private int user_id;
 
@@ -20,12 +20,12 @@ public class Cart {
         this.service_id = service_id;
     }
 
-    public int getbusiness_id() {
-        return business_id;
+    public int getcompany_id() {
+        return company_id;
     }
 
-    public void setbusiness_id(int business_id) {
-        this.business_id = business_id;
+    public void setcompany_id(int company_id) {
+        this.company_id = company_id;
     }
 
     public int getuser_id() {
@@ -38,9 +38,9 @@ public class Cart {
 
     public Cart(){}
 
-    public Cart(int service_id, int business_id, int user_id, double service_price) {
+    public Cart(int service_id, int company_id, int user_id, double service_price) {
         this.service_id = service_id;
-        this.business_id = business_id;
+        this.company_id = company_id;
         this.user_id = user_id;
         this.service_price = service_price;
     }

@@ -4,8 +4,8 @@ public class main{
         Services serv = new Services();
         Cart cart =  new Cart();
         User user = new User();
-        Business_User b_user =new Business_User();
-        Find_Gym fgym = new Find_Gym();
+        Company_User c_user =new Company_User();
+        Find_Gyms fgym = new Find_Gyms();
         Menu menu = new Menu();
         
     }
