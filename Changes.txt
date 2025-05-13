@@ -7,3 +7,8 @@ Project Description:
 
 Domain Model:
 Αλλαγές στην κλάση Announcments ώστε να είναι σύμφωνα με τα νεα mock-ups
+
+
+
+Code:
+Menu -> πρόσθεση extra Κώδικα για (επαναφορα κωδικού, help)
