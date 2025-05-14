@@ -759,5 +759,15 @@ public class Menu {
         }
         signin();
     }
+
+    public void showAnnouncements(int user_id){
+        for (Announcements ann : find_gym.announcementsList){
+            if (user_id == ann.getuser_id()){
+                System.out.println("Announcement ID: " + ann.getann_id());
+                System.out.println("Announcement: " + ann.getann_title());
+                System.out.println();
+            }
+        }
+    }
     
 }

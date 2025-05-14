@@ -16,6 +16,7 @@ public class Find_Gyms {
     ArrayList<Cart> cartList = new ArrayList<>();
     ArrayList<My_Codes> digitalCardList = new ArrayList<>();
     ArrayList<Order> ordersList = new ArrayList<>();
+    ArrayList<Announcements> announcementsList = new ArrayList<>();
 
     public void findGym() {
         Scanner scanner = new Scanner(System.in);
