@@ -1,17 +1,25 @@
 public class Cart {
     private int service_id;
     private int company_id;
-    private double service_price;
+    private float service_price;
     private int user_id;
+    private String service_name;
 
     public double getprice() {
         return service_price;
     }
 
-    public void setprice(double service_price) {
+    public void setprice(float service_price) {
         this.service_price = service_price;
     }
 
+    public String getservice_name() {
+        return service_name;
+    }
+
+    public void setservice_name(String service_name) {
+        this.service_name = service_name;
+    }
     public int getservice_id() {
         return service_id;
     }
@@ -38,7 +46,7 @@ public class Cart {
 
     public Cart(){}
 
-    public Cart(int service_id, int company_id, int user_id, double service_price) {
+    public Cart(int service_id, int company_id, int user_id, float service_price) {
         this.service_id = service_id;
         this.company_id = company_id;
         this.user_id = user_id;
