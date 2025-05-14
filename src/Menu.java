@@ -466,8 +466,17 @@ public class Menu {
                                     System.out.println("Choose an option: (Give number)");
                                     int check = scan.nextInt();
                                     scan.nextLine();
-                                    if (check == 1)
+                                    if (check == 1){
+                                        int companyID = -1;
+                                        for(Cart cart1 : find_gym.cartList) {
+                                            if (user.getuser_id() == cart1.getuser_id()) {
+                                                companyID = cart1.getcompany_id();
+                                            }
+                                        }
+                                        find_gym.cardCreation(user.getuser_id(), companyID);
                                         find_gym.completeOrder(user.getuser_id());
+                                        
+                                    }
                                     if (check == 2){
                                         System.out.println("Name of the Gym you want to delete the Service from:");
                                         String gym = scan.nextLine();
@@ -477,7 +486,7 @@ public class Menu {
                                             if (gym_user.getcompany_name().equals(gym))
                                                 companyID = gym_user.getcompany_id();
                                         }
-                                        System.out.println("Name of the servString you want to delete:");
+                                        System.out.println("Name of the service you want to delete:");
                                         String servString = scan.nextLine();
                                         List<Cart> removeServiceFromCart = new ArrayList<>();
 
