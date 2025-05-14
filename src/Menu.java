@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class Menu {
     Find_Gyms find_gym;
     Company_User c_user;
@@ -84,8 +85,6 @@ public class Menu {
         System.out.println("Give your Tax Id (TIN):");
         long tax_id = scan.nextLong();
 
-        /* YLOPOIISI REPEAT PASSWORD */
-
         do{
 
             i++;
@@ -113,8 +112,6 @@ public class Menu {
         String username = scan.nextLine();
         System.out.println("Give your email:");
         String email = scan.nextLine();
-
-        /* YLOPOIISI REPEAT PASSWORD */
 
         do{
 
@@ -173,8 +170,6 @@ public class Menu {
             scanner.nextLine();
             }
             else 
-
-            /*OI YPIRESIES DEN EXOYN TIMH OTAN DEN EINAI SYNDROMES */
 
             {
                 service_price = 0;
@@ -530,7 +525,7 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    showAnnouncements(user.getuser_id()); //PRPEEI NA GINEI ANNOUNCMENTS
+                                    showAnnouncements(user.getuser_id());
                                     System.out.println("0. Go Back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
@@ -768,6 +763,5 @@ public class Menu {
                 System.out.println();
             }
         }
-    }
-    
+    }    
 }

@@ -168,7 +168,7 @@ public class Find_Gyms {
     }
 
     public void addToFavourites(String serviceName, int userId, String companyName) {
-        boolean found = false;      
+        boolean found = false;
         for (Company_User company : companyList) {
             if (company.getcompany_name().equals(companyName)) {
                 found = true;
