@@ -270,6 +270,12 @@ public class Find_Gyms {
 
     public void cardCreation(int userId, int companyId) {
         My_Codes card = new My_Codes();
+        for (My_Codes existingCard : digitalCardList) {
+            if (existingCard.getuser_id() == userId && existingCard.getcompany_id() == companyId) {
+                System.out.println("Digital card already exists for user ID " + userId + " and company ID " + companyId);
+                return;
+            }
+        }
         card.setuser_id(userId);
         card.setcompany_id(companyId);
         card.setcard_number("CARD-" + userId + "-" + companyId);
