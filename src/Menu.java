@@ -197,7 +197,6 @@ public class Menu {
     }
 
     public void showmenu() {
-        boolean flag = false, back = false;
         Scanner scan = new Scanner(System.in);
         int sign = 0;
         while (sign != 1 && sign != 2) {
@@ -209,8 +208,16 @@ public class Menu {
             if (sign != 1 && sign != 2)
                 System.out.println("Choose a valid option");
         }
-
-       
+        switch (sign) {
+            case 1:
+                signin();
+                break;
+            case 2:
+                signup();
+                break;
+        }
+        scan.close();
+    }
 
     public void signin(){
         Scanner scan = new Scanner(System.in);
@@ -247,7 +254,8 @@ public class Menu {
                     System.out.println("3.Favourites");
                     System.out.println("4.My Codes");
                     System.out.println("5.Profile");
-                    System.out.println("6.Announcements");
+                    System.out.println("6.Cart");
+                    System.out.println("7.Announcements");
                     System.out.println("0.Exit");
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
@@ -363,62 +371,7 @@ public class Menu {
                             scan.nextLine();
                             if (search == 2)
                                 break;
-                            else {
-                               /*  while (back == false) {
-                                    find_gym.showCart(user.getuser_id());
-                                    System.out.println("1. Complete Order");
-                                    System.out.println("2. Remove a service from cart");
-                                    System.out.println("3. Remove all services from cart");
-                                    System.out.println("4. Go back");
-                                    System.out.println();
-                                    System.out.println("Choose an option: (Give number)");
-                                    int check = scan.nextInt();
-                                    scan.nextLine();
-                                    if (check == 1)
-                                        find_gym.OrderServices(user.getuser_id());
-                                    if (check == 2){
-                                        System.out.println("Name of the pharmacy you want to delete the servString from:");
-                                        String gym = scan.nextLine();
-                                        int companyID = -1;
-                                        int serviceID = -1;
-                                        for (Company_User gym_user : find_gym.companyList){
-                                            if (gym_user.getcompany_name().equals(gym))
-                                                companyID = gym_user.getcompany_id();
-                                        }
-                                        System.out.println("Name of the servString you want to delete:");
-                                        String servString = scan.nextLine();
-                                        List<Cart> removeServiceFromCart = new ArrayList<>();
-
-                                        for (Cart cart1 : find_gym.cartList) {
-                                            if (user.getuser_id() == cart1.getuser_id() && cart1.getcompany_id() == companyID) {
-                                                for (Services serv : find_gym.servicesList) {
-                                                    if (serv.getservice_name().equals(servString) && serv.getcompany_id() == companyID) {
-                                                        serviceID = serv.getservice_id();
-                                                    }
-                                                }
-                                                if (cart1.getservice_id() == serviceID) {
-                                                    removeServiceFromCart.add(cart1);
-                                                }
-                                            }
-                                        }
-
-                                        find_gym.cartList.removeAll(removeServiceFromCart);
-                                    }
-                                    if (check == 3){
-                                        List<Cart> removeServiceFromCart = new ArrayList<>();
-                                        for (Cart cart2 : find_gym.cartList) {
-                                            if (user.getuser_id() == cart2.getuser_id()) {
-                                                removeServiceFromCart.add(cart2);
-                                            }
-                                        }
-                                        find_gym.cartList.removeAll(removeServiceFromCart);
-                                    }
-
-                                    if (check == 4) {
-                                        back = true;
-                                    }
-                                }*/
-                                
+                            else {                               
                                 while(back==false){
                                     System.out.println("Select Gym to show code: (Give name)");
                                     String gym = scan.nextLine();
@@ -459,7 +412,7 @@ public class Menu {
                                             String fname = scan.nextLine();
                                             for (User user1 : find_gym.userList ){
                                                 if (user.getuser_id() == user1.getuser_id())
-                                                    user1.setfirstname(username);
+                                                    user1.setfirstname(fname);
                                             }
                                             System.out.println("Give new Last Name:");
                                             String lname = scan.nextLine();
@@ -511,6 +464,61 @@ public class Menu {
                             break;
                         }
                         case 6:
+                        while (back == false) {
+                                    find_gym.showCart(user.getuser_id());
+                                    System.out.println("1. Complete Order");
+                                    System.out.println("2. Remove a service from cart");
+                                    System.out.println("3. Remove all services from cart");
+                                    System.out.println("4. Go back");
+                                    System.out.println();
+                                    System.out.println("Choose an option: (Give number)");
+                                    int check = scan.nextInt();
+                                    scan.nextLine();
+                                    if (check == 1)
+                                        find_gym.completeOrder(user.getuser_id());
+                                    if (check == 2){
+                                        System.out.println("Name of the Gym you want to delete the Service from:");
+                                        String gym = scan.nextLine();
+                                        int companyID = -1;
+                                        int serviceID = -1;
+                                        for (Company_User gym_user : find_gym.companyList){
+                                            if (gym_user.getcompany_name().equals(gym))
+                                                companyID = gym_user.getcompany_id();
+                                        }
+                                        System.out.println("Name of the servString you want to delete:");
+                                        String servString = scan.nextLine();
+                                        List<Cart> removeServiceFromCart = new ArrayList<>();
+
+                                        for (Cart cart1 : find_gym.cartList) {
+                                            if (user.getuser_id() == cart1.getuser_id() && cart1.getcompany_id() == companyID) {
+                                                for (Services serv : find_gym.servicesList) {
+                                                    if (serv.getservice_name().equals(servString) && serv.getcompany_id() == companyID) {
+                                                        serviceID = serv.getservice_id();
+                                                    }
+                                                }
+                                                if (cart1.getservice_id() == serviceID) {
+                                                    removeServiceFromCart.add(cart1);
+                                                }
+                                            }
+                                        }
+
+                                        find_gym.cartList.removeAll(removeServiceFromCart);
+                                    }
+                                    if (check == 3){
+                                        List<Cart> removeServiceFromCart = new ArrayList<>();
+                                        for (Cart cart2 : find_gym.cartList) {
+                                            if (user.getuser_id() == cart2.getuser_id()) {
+                                                removeServiceFromCart.add(cart2);
+                                            }
+                                        }
+                                        find_gym.cartList.removeAll(removeServiceFromCart);
+                                    }
+
+                                    if (check == 4) {
+                                        back = true;
+                                    }
+                                }
+                        case 7:
                             back = false;
                             System.out.println("1. Show Announcements");
                             System.out.println("2. Go back");
@@ -711,7 +719,8 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    SubscriptionHistory(c_user.getcompany_id());
+                                    int userid = -1;
+                                    
                                     System.out.println("1. Go Back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
@@ -750,4 +759,5 @@ public class Menu {
         }
         signin();
     }
+    
 }
