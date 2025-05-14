@@ -1,19 +1,19 @@
 public class Order {
-    private int business_id;
+    private int company_id;
     private int service_id;
     private String service_name;
-    private float service_price;
+    private double service_price;
     private String service_category;
     private int order_id;
     private int user_id;
 
-    public Order(int business_id, int user_id) {
-        this.business_id = business_id;
+    public Order(int company_id, int user_id) {
         this.user_id = user_id;
+        this.company_id = company_id;
     };
     
-    public Order(int business_id, int service_id, String service_name, float service_price, String service_category, int order_id, int user_id) {
-        this.business_id = business_id;
+    public Order(int company_id, int service_id, String service_name, double service_price, String service_category, int order_id, int user_id) {
+        this.company_id = company_id;
         this.service_id = service_id;
         this.service_name = service_name;
         this.service_price = service_price;
@@ -22,12 +22,12 @@ public class Order {
         this.user_id = user_id;
     }
 
-    public int getBusiness_id() {
-        return business_id;
+    public int getCompany_id() {
+        return company_id;
     }
 
-    public void setBusiness_id(int business_id) {
-        this.business_id = business_id;
+    public void setCompany_id(int company_id) {
+        this.company_id = company_id;
     }
 
     public int getService_id() {
@@ -46,11 +46,11 @@ public class Order {
         this.service_name = service_name;
     }
 
-    public float getService_price() {
+    public double getService_price() {
         return service_price;
     }
 
-    public void setService_price(float service_price) {
+    public void setService_price(double service_price) {
         this.service_price = service_price;
     }
 
