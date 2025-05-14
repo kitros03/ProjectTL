@@ -99,7 +99,7 @@ public class Find_Gyms {
 
     public void search() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Search any category, product, or pharmacy:");
+        System.out.println("Search any category, product, or gym:");
         String search = scan.nextLine();
         for (String categor : serviceCategoryList) {
             if (categor.equals(search))
