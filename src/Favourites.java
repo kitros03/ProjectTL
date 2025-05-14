@@ -3,19 +3,19 @@ public class Favourites extends Services {
     private float service_price;
     private String service_category;
     private int service_id;
-    private int business_id;
+    private int company_id;
     private int user_id;
-    private String business_name;
+    private String company_name;
 
     public Favourites() {
     }
 
-    public Favourites(String service_name, float service_price, String service_category, int service_id, int business_id, int user_id) {
+    public Favourites(String service_name, float service_price, String service_category, int service_id, int company_id, int user_id) {
         this.service_name = service_name;
         this.service_price = service_price;
         this.service_category = service_category;
         this.service_id = service_id;
-        this.business_id = business_id;
+        this.company_id = company_id;
         this.user_id = user_id;
     }
 
@@ -51,12 +51,12 @@ public class Favourites extends Services {
         this.service_id = service_id;
     }
 
-    public int getbusiness_id() {
-        return business_id;
+    public int getcompany_id() {
+        return company_id;
     }
 
-    public void setbusiness_id(int business_id) {
-        this.business_id = business_id;
+    public void setcompany_id(int company_id) {
+        this.company_id = company_id;
     }
 
     public int getuser_id() {
@@ -67,12 +67,12 @@ public class Favourites extends Services {
         this.user_id = user_id;
     }
 
-    public String getbusiness_name() {
-        return business_name;
+    public String getcompany_name() {
+        return company_name;
     }
 
-    public void setbusiness_name(String business_name) {
-        this.business_name = business_name;
+    public void setcompany_name(String company_name) {
+        this.company_name = company_name;
     }
     
 }

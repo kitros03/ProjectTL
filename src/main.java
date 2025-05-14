@@ -7,6 +7,5 @@ public class main{
         Company_User b_user =new Company_User();
         Find_Gyms fgym = new Find_Gyms();
         Menu menu = new Menu();
-        
     }
 }
