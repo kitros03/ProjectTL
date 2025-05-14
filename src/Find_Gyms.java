@@ -15,6 +15,7 @@ public class Find_Gyms {
     ArrayList<Favourites> favouritesList = new ArrayList<>();
     ArrayList<Cart> cartList = new ArrayList<>();
     ArrayList<My_Codes> digitalCardList = new ArrayList<>();
+    ArrayList<My_Gyms> MyGymsList = new ArrayList<>();
     ArrayList<Order> ordersList = new ArrayList<>();
     ArrayList<Announcements> announcementsList = new ArrayList<>();
 
@@ -101,7 +102,7 @@ public class Find_Gyms {
 
     public void search() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Search any category, product, or pharmacy:");
+        System.out.println("Search any category, product, or gym:");
         String search = scan.nextLine();
         for (String categor : serviceCategoryList) {
             if (categor.equals(search))
@@ -282,4 +283,21 @@ public class Find_Gyms {
         digitalCardList.add(card);
         System.out.println("Digital card created for user ID " + userId + " and company ID " + companyId);
     }
+
+    public void AddGymToMyGyms(int userId, int companyId, String companyName, int serviceId) {
+        for (My_Gyms existingGym : MyGymsList) {
+            if (existingGym.getuser_id() == userId && existingGym.getcompany_id() == companyId) {
+                System.out.println("Company ID" + companyId + "is already in My Gyms for user with ID" + userId);
+                return;
+            }
+        }
+        My_Gyms myGym = new My_Gyms();
+        myGym.setuser_id(userId);
+        myGym.setcompany_id(companyId);
+        myGym.setcompany_name(companyName);
+        myGym.setservice_id(serviceId);
+        MyGymsList.add(myGym);
+        System.out.println("Gym added to My Gyms list for user ID " + userId);
+    }
+ 
 }

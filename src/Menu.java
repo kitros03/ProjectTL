@@ -310,11 +310,11 @@ public class Menu {
                                     scan.nextLine();
                                     if (check == 1){
                                         System.out.println("Name of the gym the service belongs to:");
-                                        String pharm = scan.nextLine();
+                                        String company_name = scan.nextLine();
                                         int companyID = -1;
                                         int serviceID = -1;
                                         for (Company_User gym_user : find_gym.companyList){
-                                            if (gym_user.getcompany_name().equals(pharm))
+                                            if (gym_user.getcompany_name().equals(company_name))
                                                 companyID = gym_user.getcompany_id();
                                         }
                                         System.out.println("Name of the service you want to delete:");
@@ -778,5 +778,16 @@ public class Menu {
                 System.out.println();
             }
         }
+    }
+
+    public void MyGyms(int user_id){
+        for (My_Gyms gym : find_gym.MyGymsList){
+            if (user_id == gym.getuser_id()){
+                System.out.println("Gym ID: " + gym.getcompany_id());
+                System.out.println("Gym Name: " + gym.getcompany_name());
+                System.out.println();
+            }
+        }
+
     }
 }
