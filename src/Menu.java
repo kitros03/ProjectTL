@@ -763,5 +763,14 @@ public class Menu {
                 System.out.println();
             }
         }
-    }    
+    }
+    
+    public void MyCodes(int user_id, int company_id){
+        for (My_Codes code : find_gym.digitalCardList){
+            if (user_id == code.getuser_id() && company_id == code.getcompany_id()){
+                System.out.println("Card Number: " + code.getcard_number());
+                System.out.println();
+            }
+        }
+    }
 }

@@ -267,4 +267,13 @@ public class Find_Gyms {
         }
 
     }
+
+    public void cardCreation(int userId, int companyId) {
+        My_Codes card = new My_Codes();
+        card.setuser_id(userId);
+        card.setcompany_id(companyId);
+        card.setcard_number("CARD-" + userId + "-" + companyId);
+        digitalCardList.add(card);
+        System.out.println("Digital card created for user ID " + userId + " and company ID " + companyId);
+    }
 }
