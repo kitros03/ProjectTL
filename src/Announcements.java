@@ -16,7 +16,11 @@ public class Announcements extends Services {
         this.ann_id = ann_id;
         this.ann_title = ann_title;
         this.ann_description = ann_description;
+        this.ann_date = ann_date;
         this.company_id = company_id;
+        this.company_name = company_name;
+        this.user_id = user_id;
+
     }
 
     public int getann_id() {
