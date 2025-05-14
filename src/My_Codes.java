@@ -1,14 +1,14 @@
 public class My_Codes extends User {
     private String card_number;
-    private int business_id;
+    private int company_id;
     private int user_id;
 
     public My_Codes() {
     }
 
-    public My_Codes(String card_number, int business_id, int user_id) {
+    public My_Codes(String card_number, int company_id, int user_id) {
         this.card_number = card_number;
-        this.business_id = business_id;
+        this.company_id = company_id;
         this.user_id = user_id;
     }
 
@@ -20,12 +20,12 @@ public class My_Codes extends User {
         this.card_number = card_number;
     }
 
-    public int getbusiness_id() {
-        return business_id;
+    public int getcompany_id() {
+        return company_id;
     }
 
-    public void setbusiness_id(int business_id) {
-        this.business_id = business_id;
+    public void setcompany_id(int company_id) {
+        this.company_id = company_id;
     }
 
     public int getuser_id() {
