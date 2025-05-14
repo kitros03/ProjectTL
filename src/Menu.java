@@ -466,7 +466,7 @@ public class Menu {
                         case 6:
                         while (back == false) {
                                     find_gym.showCart(user.getuser_id());
-                                    System.out.println("1. Complete Order");
+                                    System.out.println("1. Checkout");
                                     System.out.println("2. Remove a service from cart");
                                     System.out.println("3. Remove all services from cart");
                                     System.out.println("4. Go back");
