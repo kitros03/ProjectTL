@@ -241,9 +241,6 @@ public class Menu {
                     System.out.println();
                     System.out.println("Welcome " + user.getfirstname() + " " + user.getlastname() + " to GymHub!");
                     System.out.println("------------------------");
-
-                    /* ALLAGI STIS EPILOGES */
-
                     System.out.println("1.Find Gyms");
                     System.out.println("2.My Gyms");
                     System.out.println("3.Favourites");
@@ -288,7 +285,7 @@ public class Menu {
                                 break;
                             else {
 
-                                MyGyms(user.getuser_id()); //PREPEI NA GINEI MYGYMS
+                                MyGyms(user.getuser_id()); 
 
                             }
                         case 3:
@@ -375,7 +372,7 @@ public class Menu {
                                         if (gym_user.getcompany_name().equals(gym))
                                             companyID = gym_user.getcompany_id();
                                     }
-                                    MyCodes(user.getuser_id(), companyID); //PREPEI NA GINEI MYCODES
+                                    MyCodes(user.getuser_id(), companyID); 
                                 }
                             
                             }
