@@ -21,7 +21,7 @@ public class Announcements extends Services {
         this.company_name = company_name;
         this.user_id = user_id;
 
-    }
+    }   
 
     public int getann_id() {
         return ann_id;
