@@ -15,6 +15,7 @@ public class Find_Gyms {
     ArrayList<Favourites> favouritesList = new ArrayList<>();
     ArrayList<Cart> cartList = new ArrayList<>();
     ArrayList<My_Codes> digitalCardList = new ArrayList<>();
+    ArrayList<Order> ordersList = new ArrayList<>();
 
     public void findGym() {
         Scanner scanner = new Scanner(System.in);
@@ -99,7 +100,7 @@ public class Find_Gyms {
 
     public void search() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Search any category, product, or gym:");
+        System.out.println("Search any category, product, or pharmacy:");
         String search = scan.nextLine();
         for (String categor : serviceCategoryList) {
             if (categor.equals(search))
@@ -135,6 +136,19 @@ public class Find_Gyms {
                 System.out.println("company ID: " + cuser.getcompany_id());
                 System.out.println("company Address: " + cuser.getaddress());
                 System.out.println("company Phone: " + cuser.getphone_no());
+            }
+        }
+    }
+
+    public void showuserProfile(int userId) {
+        for (User user : userList) {
+            if (user.getuser_id() == userId) {
+                System.out.println("User Name: " + user.getfirstname() +" " + user.getlastname()); 
+                System.out.println("User Username: " + user.getusername());
+                System.out.println("User ID: " + user.getuser_id());
+                System.out.println("User Email: " + user.getemail());
+                System.out.println("User Phone: " + user.getphone_number());
+                System.out.println("User Address: " + user.getaddress());
             }
         }
     }
@@ -242,7 +256,14 @@ public class Find_Gyms {
                 System.out.println("- Service ID: " + cart.getservice_id());
                 System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
+                Order order = new Order(cart.getcompany_id(), cart.getuser_id());
+                order.setService_id(cart.getservice_id());
+                order.setService_name(cart.getservice_name());
+                order.setService_price(cart.getprice());
+                ordersList.add(order);
+                System.out.println("Order added to orders list.");
             }
         }
+
     }
 }
