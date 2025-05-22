@@ -4,13 +4,13 @@ public class Company_User {
     private int postal_code;
     private String email;
     private String address;
-    private long phone_no;
+    private String phone_no;
     private long tax_id;
     private String password;
 
     public Company_User(){};
 
-    public Company_User(int company_id, String company_name, int postal_code, String email, String address, long phone_no, long tax_id, String password){
+    public Company_User(int company_id, String company_name, int postal_code, String email, String address, String phone_no, long tax_id, String password){
         this.company_id = company_id;
         this.company_name = company_name;
         this.postal_code = postal_code;
@@ -41,7 +41,7 @@ public class Company_User {
         return address;
     }
 
-    public long getphone_no(){
+    public String getphone_no(){
         return phone_no;
     }
 
@@ -73,7 +73,7 @@ public class Company_User {
         this.address = address;
     }
 
-    public void setphone_no(long phone_no){
+    public void setphone_no(String phone_no){
         this.phone_no = phone_no;
     }
 

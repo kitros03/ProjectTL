@@ -43,7 +43,7 @@ public class Menu {
                 String companyname = companyuserE.getcompany_name();
                 String companyemail = companyuserE.getemail();
                 String companyaddress = companyuserE.getaddress();
-                long companyphone = companyuserE.getphone_no();
+                String companyphone = companyuserE.getphone_no();
                 int companypostalcode =   companyuserE.getpostal_code();
                 long companytaxid = companyuserE.gettax_id();
                 companyuserE = new Company_User(companyid, companyname, companypostalcode, companyemail, companyaddress, companyphone, companytaxid, password);
@@ -77,7 +77,7 @@ public class Menu {
         System.out.println("Give your address");
         String address = scan.nextLine();
         System.out.println("Give your Phone Number:");
-        long phone_number = scan.nextLong();
+        String phone_number = scan.nextLine();
         System.out.println("Give your Postal Code:");
         int postal_code = scan.nextInt();
         System.out.println("Give your email:");
@@ -685,11 +685,11 @@ public class Menu {
 
                                         if (edit.equals("Phone_Number")) {
                                             System.out.println("Give new Phone Number:");
-                                            long phone = scan.nextInt();
+                                            String phone = scan.nextLine();
                                             scan.nextLine();
-                                            for (Company_User bUser : find_gym.companyList ){
-                                                if (bUser.getcompany_id() == c_user.getcompany_id())
-                                                    bUser.setphone_no(phone);
+                                            for (Company_User cUser : find_gym.companyList ){
+                                                if (cUser.getcompany_id() == c_user.getcompany_id())
+                                                    cUser.setphone_no(phone);
                                         }
                                         if (edit.equals("Email")){
                                             System.out.println("Give new Email:");
