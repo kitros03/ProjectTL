@@ -720,8 +720,6 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    int userid = -1;
-                                    
                                     System.out.println("1. Go Back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
