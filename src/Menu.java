@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Menu {
+public class Menu { 
     Find_Gyms find_gym;
     Company_User c_user;
     Services services;
