@@ -10,6 +10,12 @@ public class Menu {
     User user;
     private int company_id = 0, user_id = 0, service_id = 0;
 
+    public Menu() {
+        this.find_gym = new Find_Gyms();
+        this.c_user = new Company_User();
+        this.services = new Services();
+        this.user = new User();
+    }
     
     public int getcompany_id() {
         return company_id;
@@ -63,6 +69,7 @@ public class Menu {
                 return 2;
             }
         }
+        System.out.println("Username or Password is incorrect. Please try again.");
         return 0;
     }
 
@@ -230,6 +237,9 @@ public class Menu {
 
             case 2:
                 personalhomescreen();
+                break;
+            case 0:
+                showmenu();
                 break;
         }
     }
@@ -447,11 +457,12 @@ public class Menu {
                                             }
                                         }
 
+                                     }
                                     }
                                     if (check == 2) {
                                         back = true;
                                     }
-                                }
+                                
                             }
                             break;
                         }
