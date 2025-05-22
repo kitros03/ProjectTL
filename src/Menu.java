@@ -201,6 +201,7 @@ public class Menu {
     public void showmenu() {
         Scanner scan = new Scanner(System.in);
         int sign = 0;
+        showusers();
         while (sign != 1 && sign != 2) {
             System.out.println("1. Sign in");
             System.out.println("2. Sign up");
@@ -799,4 +800,6 @@ public class Menu {
         }
 
     }
+
+    public void showusers()
 }

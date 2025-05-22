@@ -10,7 +10,7 @@ public class main{
         int user_id = 0;
         int company_id = 0;
         int service_id = 0;
-
+       //
         c_user = new Company_User(company_id, "Athlesis", 26221, "athlesis@gymhub.com", "Korinthou, 123", "6912345678", 123456789, "password");
         fgym.addcompany(c_user);
         company_id++;
