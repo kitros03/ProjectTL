@@ -305,9 +305,9 @@ public class Find_Gyms {
         Services serv;
         Menu menu = new Menu();
         User user;
-        int company_id = 0;
-        int user_id = 0;
-        int service_id = 0;
+        int company_id = 1;
+        int user_id = 1;
+        int service_id = 1;
         c_user = new Company_User(company_id, "Athlesis", 26221, "athlesis@gymhub.com", "Korinthou, 123", "6912345678", 123456789, "password");
         addcompany(c_user);
         company_id++;
