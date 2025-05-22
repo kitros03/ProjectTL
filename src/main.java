@@ -85,5 +85,7 @@ public class main{
         fgym.adduser(user);
         user_id++;
         menu.setuser_id(user_id);
+
+        menu.showmenu();
     }
 }
