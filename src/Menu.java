@@ -593,6 +593,7 @@ public class Menu {
                                     scan.nextLine();
                                     if (case1 == 1){
                                         find_gym.search();
+
                                     }
                                     else if (case1 == 2){
                                     find_gym.showCategories();
@@ -628,10 +629,12 @@ public class Menu {
 
                                             else if (check == 2)
                                                 back = true;
+                                        
                                     }
                                     if (check == 2) {
                                         back = true;
                                     }
+                                    System.out.println("\n");
                                   }
                                     else if (case1 == 3)
                                         back = true;
