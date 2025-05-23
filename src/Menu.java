@@ -78,6 +78,7 @@ public class Menu {
         String password;
         String password2;
         int i=-1;
+        int added = 0;
         System.out.println("Creating your company account...");
         System.out.println("Give your gym's name:");
         String name = scan.nextLine();
@@ -87,6 +88,7 @@ public class Menu {
         String phone_number = scan.nextLine();
         System.out.println("Give your Postal Code:");
         int postal_code = scan.nextInt();
+        scan.nextLine();
         System.out.println("Give your email:");
         String email = scan.nextLine();
         System.out.println("Give your Tax Id (TIN):");
@@ -105,7 +107,9 @@ public class Menu {
 
         }while(!password.equals(password2));
         c_user = new Company_User(this.company_id, name, postal_code, email, address, phone_number, tax_id, password);
-        find_gym.addcompany(c_user);
+        added = find_gym.addcompany(c_user);
+        if(added == 0)
+            signup();
         this.company_id++;
     }
 
@@ -114,6 +118,7 @@ public class Menu {
         String password;
         String password2;
         int i=-1;
+        int added = 0;
         System.out.println("Creating your account...");
         System.out.println("Give your username:");
         String username = scan.nextLine();
@@ -133,7 +138,9 @@ public class Menu {
 
         }while(!password.equals(password2));
         user = new User(this.user_id, null, null, username, email, password, null, null);
-        find_gym.adduser(user);
+        added = find_gym.adduser(user);
+        if(added == 0)
+            signup();
         this.user_id++;
     }
 
@@ -201,8 +208,8 @@ public class Menu {
     public void showmenu() {
         Scanner scan = new Scanner(System.in);
         int sign = 0;
-        find_gym.addusers();
-        showusers();
+        //find_gym.addusers();
+        //showusers();
         while (sign != 1 && sign != 2) {
             System.out.println("1. Sign in");
             System.out.println("2. Sign up");
@@ -241,6 +248,7 @@ public class Menu {
                 personalhomescreen();
                 break;
             case 0:
+                System.out.println("Invalid username or password. Please try again.");
                 showmenu();
                 break;
         }
@@ -260,7 +268,7 @@ public class Menu {
                     System.out.println("5.Profile");
                     System.out.println("6.Cart");
                     System.out.println("7.Announcements");
-                    System.out.println("0.Exit");
+                    System.out.println("8.Sign Out");
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
                     int eisodos;
@@ -556,8 +564,17 @@ public class Menu {
                                 }
                             }
                             break;
-                        case 0:
-                            flag = true;
+                        case 8:
+                            System.out.println("Are you sure you want to sign out? (Y/N)");
+                            String signout = scan.nextLine();
+                            if (signout.equals("Y") || signout.equals("y")) {
+                                System.out.println("You have signed out successfully!");
+                                showmenu();
+                            } else if (signout.equals("N") || signout.equals("n")) {
+                                System.out.println("You are still signed in!");
+                            } else {
+                                System.out.println("Invalid input. Please try again.");
+                            }
                             break;
                     }
                 }
@@ -575,6 +592,7 @@ public class Menu {
                     System.out.println("3.Profile");
                     System.out.println("4.Subscription History");
                     System.out.println("5.Announcements");
+                    System.out.println(("6.Sign Out"));
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
                     int insert;
@@ -751,6 +769,19 @@ public class Menu {
 
                         case 5:
                             flag = true;
+                            break;
+                        case 6:
+                            System.out.println("Are you sure you want to sign out? (Y/N)");
+                            String signout = scan.nextLine();
+                            if (signout.equals("Y") || signout.equals("y")) {
+                                System.out.println("You have signed out successfully!");
+                                showmenu();
+                            } else if (signout.equals("N") || signout.equals("n")) {
+                                System.out.println("You are still signed in!");
+                            } else {
+                                System.out.println("Invalid input. Please try again.");
+                            }
+
                             break;
                     }
                 }

@@ -39,19 +39,26 @@ public class Find_Gyms {
     
     }
 
-    public void addcompany(Company_User company) {
+    public int addcompany(Company_User company) {
         try{
-            if(companyList.contains(company)){
-                System.out.println("company already exists");
-        }
-        else{
+            for (Company_User existingCompany : companyList) {
+                if (existingCompany.getcompany_name().equals(company.getcompany_name())) {
+                    System.out.println("Company already exists");
+                    return 0;
+                }
+                if (existingCompany.getemail() == company.getemail()) {
+                    System.out.println("Company email already exists");
+                    return 0;
+                }
+            }
             companyList.add(company);
             System.out.println("company added successfully");
-        }
+        
         }
         catch(Exception e){
             System.out.println("Error adding company: " + e.getMessage());
         }
+        return 1;
     }
 
     public void addservice(Services service) {
@@ -69,19 +76,25 @@ public class Find_Gyms {
         }
     }
 
-    public void adduser(User user) {
+    public int adduser(User user) {
         try{
-            if(userList.contains(user)){
-                System.out.println("User already exists");
-        }
-        else{
+            for(User existingUser : userList) {
+                if (existingUser.getusername().equals(user.getusername())) {
+                    System.out.println("Username already exists");
+                    return 0;
+                }
+                if (existingUser.getemail().equals(user.getemail())) {
+                    System.out.println("Email already exists");
+                    return 0;
+                }
+            }
             userList.add(user);
             System.out.println("User added successfully");
-        }
         }
         catch(Exception e){
             System.out.println("Error adding user: " + e.getMessage());
         }
+        return 1;
     }
 
     public void showCategories(){
