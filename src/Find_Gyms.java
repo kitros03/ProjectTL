@@ -181,17 +181,17 @@ public class Find_Gyms {
         }
     }
 
-    public void addToFavourites(String serviceName, int userId, String companyName) {
+    public void addToFavourites(String serviceName, int userId, int company_id) {
         boolean found = false;
         for (Company_User company : companyList) {
-            if (company.getcompany_name().equals(companyName)) {
+            if (company.getcompany_id() == company_id) {
                 found = true;
                 break;
             }
         }
         Favourites fav = new Favourites();
         for (Services service : servicesList) {
-            if (service.getservice_name().equals(serviceName) && service.getcompany_name().equals(companyName)) {
+            if (service.getservice_name().equals(serviceName) && service.getcompany_id() == company_id) {
                 fav.setservice_name(service.getservice_name());
                 fav.setservice_price(service.getservice_price());
                 fav.setservice_category(service.getservice_category());
@@ -224,10 +224,10 @@ public class Find_Gyms {
         }
     }
 
-    public void addToCart(String serviceName, int userId, String companyName) {
+    public void addToCart(String serviceName, int userId, int company_id) {
         boolean found = false;      
         for (Company_User company : companyList) {
-            if (company.getcompany_name().equals(companyName)) {
+            if (company.getcompany_id() == company_id) {
                 found = true;
                 break;
             }
@@ -237,13 +237,14 @@ public class Find_Gyms {
             }
         }
         for(Services service : servicesList) {
-            if (service.getservice_name().equals(serviceName) && service.getcompany_name().equals(companyName)) {
+            if (service.getservice_name().equals(serviceName) && service.getcompany_id() == company_id) {
                 Cart cart = new Cart();
                 cart.setservice_id(service.getservice_id());
                 cart.setcompany_id(service.getcompany_id());
                 cart.setuser_id(userId);
                 cart.setprice(service.getservice_price());
                 System.out.println("Service added to cart: " + service.getservice_name());
+                cartList.add(cart);
                 found = true;
                 return;
             }
