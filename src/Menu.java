@@ -78,6 +78,7 @@ public class Menu {
         String password;
         String password2;
         int i=-1;
+        int added = 0;
         System.out.println("Creating your company account...");
         System.out.println("Give your gym's name:");
         String name = scan.nextLine();
@@ -87,6 +88,7 @@ public class Menu {
         String phone_number = scan.nextLine();
         System.out.println("Give your Postal Code:");
         int postal_code = scan.nextInt();
+        scan.nextLine();
         System.out.println("Give your email:");
         String email = scan.nextLine();
         System.out.println("Give your Tax Id (TIN):");
@@ -105,7 +107,9 @@ public class Menu {
 
         }while(!password.equals(password2));
         c_user = new Company_User(this.company_id, name, postal_code, email, address, phone_number, tax_id, password);
-        find_gym.addcompany(c_user);
+        added = find_gym.addcompany(c_user);
+        if(added == 0)
+            signup();
         this.company_id++;
     }
 
@@ -114,6 +118,7 @@ public class Menu {
         String password;
         String password2;
         int i=-1;
+        int added = 0;
         System.out.println("Creating your account...");
         System.out.println("Give your username:");
         String username = scan.nextLine();
@@ -133,7 +138,9 @@ public class Menu {
 
         }while(!password.equals(password2));
         user = new User(this.user_id, null, null, username, email, password, null, null);
-        find_gym.adduser(user);
+        added = find_gym.adduser(user);
+        if(added == 0)
+            signup();
         this.user_id++;
     }
 
@@ -202,7 +209,7 @@ public class Menu {
         Scanner scan = new Scanner(System.in);
         int sign = 0;
         find_gym.addusers();
-        showusers();
+        //showusers();
         while (sign != 1 && sign != 2) {
             System.out.println("1. Sign in");
             System.out.println("2. Sign up");
@@ -241,6 +248,7 @@ public class Menu {
                 personalhomescreen();
                 break;
             case 0:
+                System.out.println("Invalid username or password. Please try again.");
                 showmenu();
                 break;
         }
@@ -260,7 +268,7 @@ public class Menu {
                     System.out.println("5.Profile");
                     System.out.println("6.Cart");
                     System.out.println("7.Announcements");
-                    System.out.println("0.Exit");
+                    System.out.println("8.Sign Out");
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
                     int eisodos;
@@ -270,19 +278,50 @@ public class Menu {
                     switch (eisodos) {
                         case 1:
                             back = false;
-                            int search ;
+                            int search;
                             while (back == false) {
-                                System.out.println("1. Search");
-                                System.out.println("2. Go back");
-                                System.out.println();
-                                System.out.println("Choose an option (Give number)");
-                                int case1 = scan.nextInt();
+                                find_gym.search();  // Assuming this method displays a list of gyms and services
+                                System.out.println("Would you like to add any service to your favorites or cart?");
+                                System.out.println("1. Add to Favorites");
+                                System.out.println("2. Add to Cart");
+                                System.out.println("3. Go back");
+                                System.out.println("Choose an option: (Give number)");
+                                int action = scan.nextInt();
                                 scan.nextLine();
-                                if (case1 == 1){
-                                    find_gym.search();
+
+                                if (action == 1) {
+                                    System.out.println("Enter the name of the service to add to favorites:");
+                                    String serviceName = scan.nextLine();
+                                    String service_name= null;
+                                    int company_id = -1;
+                                    for (Services service : find_gym.servicesList) {
+                                        if (service.getservice_name().equals(serviceName)) {
+                                            service_name = service.getservice_name();
+                                            company_id = service.getcompany_id();
+                                            break;
+                                        }
+                                    }
+                                    // Add to Favourites
+                                    find_gym.addToFavourites(service_name, user.getuser_id(), company_id);
+                                    System.out.println(serviceName + " has been added to your favorites!");
+                                } else if (action == 2) {
+                                    System.out.println("Enter the name of the service to add to cart:");
+                                    String serviceName = scan.nextLine();
+                                    String service_name = null;
+                                    int company_id = -1;
+                                    for (Services service : find_gym.servicesList) {
+                                        if (service.getservice_name().equals(serviceName)) {
+                                            service_name = service.getservice_name();
+                                            company_id = service.getcompany_id();
+                                            break;
+                                        }
+                                    }
+                                    // Add to Cart
+                                    find_gym.addToCart(service_name, user.getuser_id(),  company_id);
+                                    System.out.println(serviceName + " has been added to your cart!");
+                                } else if (action == 3) {
+                                    back = true; // Go back to the previous menu
                                 }
-                                else if (case1 == 2)
-                                    back = true;
                             }
                             break;
                         case 2:
@@ -373,23 +412,51 @@ public class Menu {
                             System.out.println("Choose an option (Give number)");
                             search = scan.nextInt();
                             scan.nextLine();
-                            if (search == 2)
+
+                            if (search == 2) {
+                                // Exit the current case and go back to the main menu
                                 break;
-                            else {                               
-                                while(back==false){
+                            } else {
+                                // Display the cart before proceeding
+                                System.out.println("Showing your Cart:");
+                                find_gym.showCart(user.getuser_id());  // Assuming you have the showCart method correctly implemented
+
+                                while (back == false) {
+                                    // Ask user for gym selection
                                     System.out.println("Select Gym to show code: (Give name)");
                                     String gym = scan.nextLine();
                                     int companyID = -1;
-                                    for (Company_User gym_user : find_gym.companyList){
-                                        if (gym_user.getcompany_name().equals(gym))
+                                    boolean gymFound = false;  // Flag to check if gym was found
+                                    for (Company_User gym_user : find_gym.companyList) {
+                                        if (gym_user.getcompany_name().equals(gym)) {
                                             companyID = gym_user.getcompany_id();
+                                            gymFound = true;
+                                            break;  // Exit loop once the gym is found
+                                        }
                                     }
-                                    MyCodes(user.getuser_id(), companyID); 
+
+                                    if (gymFound) {
+                                        MyCodes(user.getuser_id(), companyID); // Show the codes for the selected gym
+                                    } else {
+                                        System.out.println("Gym not found. Please try again.");
+                                    }
+
+                                    // Provide option to go back after viewing the code
+                                    System.out.println("1. Go back to the previous menu");
+                                    System.out.println("2. Choose another gym to show code");
+                                    int option = scan.nextInt();
+                                    scan.nextLine();
+
+                                    if (option == 1) {
+                                        // Exit the loop and go back to the previous menu
+                                        back = true;
+                                    } else if (option == 2) {
+                                        // Continue allowing the user to select another gym
+                                        continue;
+                                    }
                                 }
-                            
                             }
                             break;
-
 
                         case 5:
                             back = false;
@@ -556,8 +623,17 @@ public class Menu {
                                 }
                             }
                             break;
-                        case 0:
-                            flag = true;
+                        case 8:
+                            System.out.println("Are you sure you want to sign out? (Y/N)");
+                            String signout = scan.nextLine();
+                            if (signout.equals("Y") || signout.equals("y")) {
+                                System.out.println("You have signed out successfully!");
+                                showmenu();
+                            } else if (signout.equals("N") || signout.equals("n")) {
+                                System.out.println("You are still signed in!");
+                            } else {
+                                System.out.println("Invalid input. Please try again.");
+                            }
                             break;
                     }
                 }
@@ -575,6 +651,7 @@ public class Menu {
                     System.out.println("3.Profile");
                     System.out.println("4.Subscription History");
                     System.out.println("5.Announcements");
+                    System.out.println(("6.Sign Out"));
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
                     int insert;
@@ -751,6 +828,19 @@ public class Menu {
 
                         case 5:
                             flag = true;
+                            break;
+                        case 6:
+                            System.out.println("Are you sure you want to sign out? (Y/N)");
+                            String signout = scan.nextLine();
+                            if (signout.equals("Y") || signout.equals("y")) {
+                                System.out.println("You have signed out successfully!");
+                                showmenu();
+                            } else if (signout.equals("N") || signout.equals("n")) {
+                                System.out.println("You are still signed in!");
+                            } else {
+                                System.out.println("Invalid input. Please try again.");
+                            }
+
                             break;
                     }
                 }

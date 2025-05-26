@@ -39,19 +39,26 @@ public class Find_Gyms {
     
     }
 
-    public void addcompany(Company_User company) {
+    public int addcompany(Company_User company) {
         try{
-            if(companyList.contains(company)){
-                System.out.println("company already exists");
-        }
-        else{
+            for (Company_User existingCompany : companyList) {
+                if (existingCompany.getcompany_name().equals(company.getcompany_name())) {
+                    System.out.println("Company already exists");
+                    return 0;
+                }
+                if (existingCompany.getemail() == company.getemail()) {
+                    System.out.println("Company email already exists");
+                    return 0;
+                }
+            }
             companyList.add(company);
             System.out.println("company added successfully");
-        }
+        
         }
         catch(Exception e){
             System.out.println("Error adding company: " + e.getMessage());
         }
+        return 1;
     }
 
     public void addservice(Services service) {
@@ -69,19 +76,25 @@ public class Find_Gyms {
         }
     }
 
-    public void adduser(User user) {
+    public int adduser(User user) {
         try{
-            if(userList.contains(user)){
-                System.out.println("User already exists");
-        }
-        else{
+            for(User existingUser : userList) {
+                if (existingUser.getusername().equals(user.getusername())) {
+                    System.out.println("Username already exists");
+                    return 0;
+                }
+                if (existingUser.getemail().equals(user.getemail())) {
+                    System.out.println("Email already exists");
+                    return 0;
+                }
+            }
             userList.add(user);
             System.out.println("User added successfully");
-        }
         }
         catch(Exception e){
             System.out.println("Error adding user: " + e.getMessage());
         }
+        return 1;
     }
 
     public void showCategories(){
@@ -168,17 +181,17 @@ public class Find_Gyms {
         }
     }
 
-    public void addToFavourites(String serviceName, int userId, String companyName) {
+    public void addToFavourites(String serviceName, int userId, int company_id) {
         boolean found = false;
         for (Company_User company : companyList) {
-            if (company.getcompany_name().equals(companyName)) {
+            if (company.getcompany_id() == company_id) {
                 found = true;
                 break;
             }
         }
         Favourites fav = new Favourites();
         for (Services service : servicesList) {
-            if (service.getservice_name().equals(serviceName) && service.getcompany_name().equals(companyName)) {
+            if (service.getservice_name().equals(serviceName) && service.getcompany_id() == company_id) {
                 fav.setservice_name(service.getservice_name());
                 fav.setservice_price(service.getservice_price());
                 fav.setservice_category(service.getservice_category());
@@ -211,10 +224,10 @@ public class Find_Gyms {
         }
     }
 
-    public void addToCart(String serviceName, int userId, String companyName) {
+    public void addToCart(String serviceName, int userId, int company_id) {
         boolean found = false;      
         for (Company_User company : companyList) {
-            if (company.getcompany_name().equals(companyName)) {
+            if (company.getcompany_id() == company_id) {
                 found = true;
                 break;
             }
@@ -224,13 +237,14 @@ public class Find_Gyms {
             }
         }
         for(Services service : servicesList) {
-            if (service.getservice_name().equals(serviceName) && service.getcompany_name().equals(companyName)) {
+            if (service.getservice_name().equals(serviceName) && service.getcompany_id() == company_id) {
                 Cart cart = new Cart();
                 cart.setservice_id(service.getservice_id());
                 cart.setcompany_id(service.getcompany_id());
                 cart.setuser_id(userId);
                 cart.setprice(service.getservice_price());
                 System.out.println("Service added to cart: " + service.getservice_name());
+                cartList.add(cart);
                 found = true;
                 return;
             }
