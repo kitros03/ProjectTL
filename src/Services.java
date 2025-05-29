@@ -8,7 +8,8 @@ public class Services {
     private String company_name;
     public Services() {};
 
-    public Services(int company_id, int service_id, String service_name, float service_price, String service_category){
+    public Services(int company_id, int service_id, String service_name, float service_price, String service_category, String company_name) {
+        this.company_name = company_name;
         this.company_id = company_id;
         this.service_category = service_category;
         this.service_id = service_id;

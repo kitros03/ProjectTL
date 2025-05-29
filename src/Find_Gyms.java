@@ -140,6 +140,7 @@ public class Find_Gyms {
                 System.out.println("Service Name: " + service.getservice_name());
                 System.out.println("Service Price: " + service.getservice_price());
                 System.out.println("Service Category: " + service.getservice_category());
+                System.out.println("Company Name: " + service.getcompany_name());
             }
         }
     }
@@ -349,47 +350,47 @@ public class Find_Gyms {
         company_id++;
         menu.setcompany_id(company_id);
 
-        serv = new Services(1, service_id, "1 Month Subscription", 40.0f, "Subscription");
+        serv = new Services(1, service_id, "1 Month Subscription", 40.0f, "Subscription", "Athlesis");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(1, service_id, "3 Month Subscription", 100.0f, "Subscription");
+        serv = new Services(1, service_id, "3 Month Subscription", 100.0f, "Subscription", "Athlesis");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(1, service_id, "Personal Training(Per month)", 120.0f, "Personal Training");
+        serv = new Services(1, service_id, "Personal Training(Per month)", 120.0f, "Personal Training", "Athlesis");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(2, service_id, "1 Month Subscription", 35.0f, "Subscription");
+        serv = new Services(2, service_id, "1 Month Subscription", 35.0f, "Subscription", "GainsFactory");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(2, service_id, "4 Month Subscription", 115.0f, "Subscription");
+        serv = new Services(2, service_id, "4 Month Subscription", 115.0f, "Subscription", "GainsFactory");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(2, service_id, "Personal Training(Per month)", 100.0f, "Personal Training");
+        serv = new Services(2, service_id, "Personal Training(Per month)", 100.0f, "Personal Training", "GainsFactory");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(3, service_id, "1 Month Subscription", 50.0f, "Subscription");
+        serv = new Services(3, service_id, "1 Month Subscription", 50.0f, "Subscription", "Sporting Centre");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(3, service_id, "3 Month Subscription", 130.0f, "Subscription");
+        serv = new Services(3, service_id, "3 Month Subscription", 130.0f, "Subscription", "Sporting Centre");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(3, service_id, "Yoga Class(Per Month)", 50.0f, "Classes");
+        serv = new Services(3, service_id, "Yoga Class(Per Month)", 50.0f, "Classes", "Sporting Centre");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);
