@@ -328,7 +328,7 @@ public class Find_Gyms {
     public void showSubscriptionHistory(int userid) {
         System.out.println("Subscription history for user ID " + userid + ":");
         for (Order order : ordersList) {
-            if (order.getuser_id() == userid+1) {
+            if (order.getuser_id() == userid) {
                 System.out.println("- Order ID: " + order.getorder_id());
                 System.out.println("  Service Name: " + order.getservice_name());
                 System.out.println("  Service Price: " + order.getservice_price());
