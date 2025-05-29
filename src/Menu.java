@@ -191,12 +191,12 @@ public class Menu {
             flag = false;
             for (Services services : find_gym.servicesList) {
                 if (service_name.equals(services.getservice_name())) {
-                    services = new Services(c_user.getcompany_id(), services.getservice_id(), service_name, service_price, service_category);
+                    services = new Services(c_user.getcompany_id(), services.getservice_id(), service_name, service_price, service_category, c_user.getcompany_name());
                     flag = true;
                 }
             }
             if (!flag) {
-                services = new Services(c_user.getcompany_id(), this.service_id, service_name, service_price, service_category);
+                services = new Services(c_user.getcompany_id(), this.service_id, service_name, service_price, service_category, c_user.getcompany_name());
                 this.service_id++;
             }
             newservices_list.add(services);
