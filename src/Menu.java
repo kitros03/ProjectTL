@@ -8,7 +8,7 @@ public class Menu {
     Company_User c_user;
     Services services;
     User user;
-    private int company_id = 0, user_id = 0, service_id = 0;
+    private int company_id, user_id, service_id;
 
     public Menu() {
         this.find_gym = new Find_Gyms();
@@ -878,13 +878,27 @@ public class Menu {
                                 break;
                             else {
                                 while (back == false) {
-                                    System.out.println("1. Go Back");
+                                    System.out.println("1. View Subscription History");
+                                    System.out.println("2. Go back");
                                     System.out.println();
                                     System.out.println("Choose an option: (Give number)");
                                     int check = scan.nextInt();
                                     scan.nextLine();
-                                    if (check == 1) {
+                                    if (check == 2) {
                                         back = true;
+                                    }
+                                    else if (check == 1) {
+                                        find_gym.showGymHistory(c_user.getcompany_id());
+                                        System.out.println("1. Go back");
+                                        System.out.println();
+                                        System.out.println("Choose an option: (Give number)");
+                                        check = scan.nextInt();
+                                        scan.nextLine();
+                                        if (check == 1)
+                                            back = true;
+                                    }
+                                    else {
+                                        System.out.println("Invalid input. Please try again.");
                                     }
                                 }
                             }

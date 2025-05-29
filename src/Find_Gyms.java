@@ -328,11 +328,21 @@ public class Find_Gyms {
     public void showSubscriptionHistory(int userid) {
         System.out.println("Subscription history for user ID " + userid + ":");
         for (Order order : ordersList) {
-            if (order.getuser_id() == userid) {
+            if (order.getuser_id() == userid+1) {
                 System.out.println("- Order ID: " + order.getorder_id());
                 System.out.println("  Service Name: " + order.getservice_name());
                 System.out.println("  Service Price: " + order.getservice_price());
                 System.out.println("  Company ID: " + order.getcompany_id());
+            }
+        }
+    }
+
+    public void showGymHistory(int companyid) {
+        System.out.println("Subscription history for company ID " + companyid + ":");
+        for (Order order : ordersList) {
+            if (order.getcompany_id() == companyid) {
+                System.out.println("- Company Name: " + order.getuser_id());
+                System.out.println("  Service ID: " + order.getservice_id());
             }
         }
     }
