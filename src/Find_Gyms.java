@@ -314,7 +314,7 @@ public class Find_Gyms {
         System.out.println("Gym added to My Gyms list for user ID " + userid);
     }
     
-/*  public void addusers(){
+  /*public void addusers(){
         Company_User c_user;
         Services serv;
         Menu menu = new Menu();
