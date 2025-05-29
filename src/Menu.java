@@ -208,8 +208,7 @@ public class Menu {
     public void showmenu() {
         Scanner scan = new Scanner(System.in);
         int sign = 0;
-        //find_gym.addusers();
-        //showusers();
+        find_gym.addusers();
         while (sign != 1 && sign != 2) {
             System.out.println("1. Sign in");
             System.out.println("2. Sign up");
