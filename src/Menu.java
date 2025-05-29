@@ -664,7 +664,7 @@ public class Menu {
                     System.out.println("3.Profile");
                     System.out.println("4.Subscription History");
                     System.out.println("5.Announcements");
-                    System.out.println(("6.Sign Out"));
+                    System.out.println("6.Sign Out");
                     System.out.println();
                     System.out.println("Choose an option: (Give number)");
                     int insert;
