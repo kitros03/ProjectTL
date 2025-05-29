@@ -273,13 +273,14 @@ public class Menu {
                     int eisodos;
                     Scanner eis = new Scanner(System.in);
                     eisodos = eis.nextInt();
+                    eis.nextLine();
 
                     switch (eisodos) {
                         case 1:
                             back = false;
                             int search;
                             while (back == false) {
-                                find_gym.search();  // Assuming this method displays a list of gyms and services
+                                find_gym.search();  
                                 System.out.println("Would you like to add any service to your favorites or cart?");
                                 System.out.println("1. Add to Favorites");
                                 System.out.println("2. Add to Cart");
@@ -332,6 +333,7 @@ public class Menu {
                             search = scan.nextInt();
                             scan.nextLine();
                             if (search == 2)
+                                
                                 break;
                             else {
 
@@ -346,8 +348,10 @@ public class Menu {
                             System.out.println("Choose an option: (Give number)");
                             search = scan.nextInt();
                             scan.nextLine();
-                            if (search == 2)
+                            if (search == 2){
+                                back = true; // Go back to the previous menu
                                 break;
+                            }
                             else {
                                 while (back == false) {
                                     find_gym.showUserFavourites(user.getuser_id());
@@ -460,13 +464,16 @@ public class Menu {
                         case 5:
                             back = false;
                             System.out.println("1. See profile");
-                            System.out.println("2. Go back");
+                            System.out.println("2. See subscription history");
+                            System.out.println("3. Go back");
                             System.out.println("Choose an option (Give number)");
                             search = scan.nextInt();
                             scan.nextLine();
-                            if (search == 2)
+                            if( search == 3) {
+                                back = true; // Go back to the previous menu
                                 break;
-                            else {
+                            }
+                            else if( search == 1) {
                                 while (back == false) {
                                     find_gym.showuserProfile(user.getuser_id());
                                     System.out.println("1. Edit Profile");
@@ -525,16 +532,21 @@ public class Menu {
                                             }
                                         }
 
-                                     }
+                                     
                                     }
                                     if (check == 2) {
-                                        back = true;
+                                        back = true; // Go back to the previous menu
                                     }
+                                
+                                }
+                            }
+                            } else if (search == 2) {
+                                find_gym.showSubscriptionHistory(user.getuser_id());
                                 
                             }
                             break;
-                        }
                         case 6:
+                        back = false;
                         while (back == false) {
                                     find_gym.showCart(user.getuser_id());
                                     System.out.println("1. Checkout");
@@ -596,8 +608,10 @@ public class Menu {
 
                                     if (check == 4) {
                                         back = true;
-                                    }
-                                }
+                                        break;
+                                    } 
+                                }  
+                                break;      
                         case 7:
                             back = false;
                             System.out.println("1. Show Announcements");
@@ -655,6 +669,7 @@ public class Menu {
                     System.out.println("Choose an option: (Give number)");
                     int insert;
                     insert = scan.nextInt();
+                    scan.nextLine();
                     switch (insert) {
                         case 1:
                             back = false;
