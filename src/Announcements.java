@@ -47,7 +47,7 @@ public class Announcements extends Services {
         this.ann_description = ann_description;
     }
 
-        public Date getann_date() {
+    public Date getann_date() {
         return ann_date;
     }
 

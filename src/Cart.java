@@ -5,7 +5,7 @@ public class Cart {
     private int user_id;
     private String service_name;
 
-    public double getprice() {
+    public float getprice() {
         return service_price;
     }
 

@@ -155,9 +155,9 @@ public class Find_Gyms {
         }
     }
 
-    public void showuserProfile(int userId) {
+    public void showuserProfile(int userid) {
         for (User user : userList) {
-            if (user.getuser_id() == userId) {
+            if (user.getuser_id() == userid) {
                 System.out.println("User Name: " + user.getfirstname() +" " + user.getlastname()); 
                 System.out.println("User Username: " + user.getusername());
                 System.out.println("User ID: " + user.getuser_id());
@@ -181,7 +181,7 @@ public class Find_Gyms {
         }
     }
 
-    public void addToFavourites(String serviceName, int userId, int company_id) {
+    public void addToFavourites(String serviceName, int userid, int company_id) {
         boolean found = false;
         for (Company_User company : companyList) {
             if (company.getcompany_id() == company_id) {
@@ -197,7 +197,7 @@ public class Find_Gyms {
                 fav.setservice_category(service.getservice_category());
                 fav.setservice_id(service.getservice_id());
                 fav.setcompany_id(service.getcompany_id());
-                fav.setuser_id(userId);
+                fav.setuser_id(userid);
                 break;
             }
         }
@@ -206,7 +206,7 @@ public class Find_Gyms {
             return;
         }
         for (Favourites favourite : favouritesList) {
-            if (favourite.getservice_name().equals(fav.getservice_name()) && favourite.getuser_id() == userId) {
+            if (favourite.getservice_name().equals(fav.getservice_name()) && favourite.getuser_id() == userid) {
                 System.out.println("Service already in favourites.");
                 return;
             }
@@ -215,16 +215,16 @@ public class Find_Gyms {
         System.out.println("Service added to favourites: " + fav.getservice_name());
     }
 
-    public void showUserFavourites(int userId) {
-        System.out.println("Favourites for user ID " + userId + ":");
+    public void showUserFavourites(int userid) {
+        System.out.println("Favourites for user ID " + userid + ":");
         for (Favourites fav : favouritesList) {
-            if (fav.getuser_id() == userId) {
+            if (fav.getuser_id() == userid) {
                 System.out.println("- " + fav.getservice_name());
             }
         }
     }
 
-    public void addToCart(String serviceName, int userId, int company_id) {
+    public void addToCart(String serviceName, int userid, int company_id) {
         boolean found = false;      
         for (Company_User company : companyList) {
             if (company.getcompany_id() == company_id) {
@@ -241,7 +241,7 @@ public class Find_Gyms {
                 Cart cart = new Cart();
                 cart.setservice_id(service.getservice_id());
                 cart.setcompany_id(service.getcompany_id());
-                cart.setuser_id(userId);
+                cart.setuser_id(userid);
                 cart.setprice(service.getservice_price());
                 System.out.println("Service added to cart: " + service.getservice_name());
                 cartList.add(cart);
@@ -254,10 +254,10 @@ public class Find_Gyms {
         }
     }
 
-    public void showCart(int userId) {
-        System.out.println("Cart for user ID " + userId + ":");
+    public void showCart(int userid) {
+        System.out.println("Cart for user ID " + userid + ":");
         for (Cart cart : cartList) {
-            if (cart.getuser_id() == userId) {
+            if (cart.getuser_id() == userid) {
                 System.out.println("- Service ID: " + cart.getservice_id());
                 System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
@@ -265,17 +265,17 @@ public class Find_Gyms {
         }
     }
 
-    public void completeOrder(int userId) {
-        System.out.println("Order completed for user ID " + userId);
+    public void completeOrder(int userid) {
+        System.out.println("Order completed for user ID " + userid);
         for (Cart cart : cartList) {
-            if (cart.getuser_id() == userId) {
+            if (cart.getuser_id() == userid) {
                 System.out.println("- Service ID: " + cart.getservice_id());
                 System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
                 Order order = new Order(cart.getcompany_id(), cart.getuser_id());
-                order.setService_id(cart.getservice_id());
-                order.setService_name(cart.getservice_name());
-                order.setService_price(cart.getprice());
+                order.setservice_id(cart.getservice_id());
+                order.setservice_name(cart.getservice_name());
+                order.setservice_price(cart.getprice());
                 ordersList.add(order);
                 System.out.println("Order added to orders list.");
             }
@@ -283,38 +283,38 @@ public class Find_Gyms {
 
     }
 
-    public void cardCreation(int userId, int companyId) {
+    public void cardCreation(int userid, int companyid) {
         My_Codes card = new My_Codes();
         for (My_Codes existingCard : digitalCardList) {
-            if (existingCard.getuser_id() == userId && existingCard.getcompany_id() == companyId) {
-                System.out.println("Digital card already exists for user ID " + userId + " and company ID " + companyId);
+            if (existingCard.getuser_id() == userid && existingCard.getcompany_id() == companyid) {
+                System.out.println("Digital card already exists for user ID " + userid + " and company ID " + companyid);
                 return;
             }
         }
-        card.setuser_id(userId);
-        card.setcompany_id(companyId);
-        card.setcard_number("CARD-" + userId + "-" + companyId);
+        card.setuser_id(userid);
+        card.setcompany_id(companyid);
+        card.setcard_number("CARD-" + userid + "-" + companyid);
         digitalCardList.add(card);
-        System.out.println("Digital card created for user ID " + userId + " and company ID " + companyId);
+        System.out.println("Digital card created for user ID " + userid + " and company ID " + companyid);
     }
 
-    public void AddGymToMyGyms(int userId, int companyId, String companyName, int serviceId) {
+    public void AddGymToMyGyms(int userid, int companyid, String companyName, int serviceid) {
         for (My_Gyms existingGym : MyGymsList) {
-            if (existingGym.getuser_id() == userId && existingGym.getcompany_id() == companyId) {
-                System.out.println("Company ID" + companyId + "is already in My Gyms for user with ID" + userId);
+            if (existingGym.getuser_id() == userid && existingGym.getcompany_id() == companyid) {
+                System.out.println("Company ID" + companyid + "is already in My Gyms for user with ID" + userid);
                 return;
             }
         }
         My_Gyms myGym = new My_Gyms();
-        myGym.setuser_id(userId);
-        myGym.setcompany_id(companyId);
+        myGym.setuser_id(userid);
+        myGym.setcompany_id(companyid);
         myGym.setcompany_name(companyName);
-        myGym.setservice_id(serviceId);
+        myGym.setservice_id(serviceid);
         MyGymsList.add(myGym);
-        System.out.println("Gym added to My Gyms list for user ID " + userId);
+        System.out.println("Gym added to My Gyms list for user ID " + userid);
     }
     
-    public void addusers(){
+/*  public void addusers(){
         Company_User c_user;
         Services serv;
         Menu menu = new Menu();
@@ -396,5 +396,5 @@ public class Find_Gyms {
         adduser(user);
         user_id++;
         menu.setuser_id(user_id);
-    }
+    }*/
 }
