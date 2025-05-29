@@ -117,14 +117,21 @@ public class Find_Gyms {
         Scanner scan = new Scanner(System.in);
         System.out.println("Search any category, product, or gym:");
         String search = scan.nextLine();
-        for (String categor : serviceCategoryList) {
-            if (categor.equals(search))
-                showCategoryServices(search);
+          for (Services service : servicesList) {
+            if (service.getservice_name().equals(search)) {
+                System.out.println("Service Name: " + service.getservice_name());
+                System.out.println("Service Price: " + service.getservice_price());
+                System.out.println("Service Category: " + service.getservice_category());
+                System.out.println("Company Name: " + service.getcompany_name());
+            }
         }
-        for (Services service : servicesList){
-            if (service.getservice_category().equals(search))
-                showServiceInfo(search);
+        
+        for (Services service : servicesList) {
+            if(service.getservice_category().equals(search)){
+                System.out.println("- " + service.getservice_name());
+            }
         }
+
         for (Company_User cuser : companyList) {
             if (search.equals(cuser.getcompany_name())) {
                 showcuserInfo(search);
