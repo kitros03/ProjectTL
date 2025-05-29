@@ -734,15 +734,66 @@ public class Menu {
 
                         case 2:
                             back = false;
-                            System.out.println("1. Services");
-                            System.out.println("2. Go back");
+                            System.out.println("1. Add Services");
+                            System.out.println("2. Edit Services");
+                            System.out.println("3. Delete Services");
+                            System.out.println("4. Go back");
                             System.out.println();
                             System.out.println("Choose an option: (Give number)");
                             search = scan.nextInt();
                             scan.nextLine();
-                            if (search == 2)
+                            if (search == 4)
                                 break;
-                            else {
+                            else if (search == 2) {
+                                System.out.println("Give the name of the service you want to edit:");
+                                String serviceName = scan.nextLine();
+                                boolean serviceFound = false;
+                                for (Services service : find_gym.servicesList) {
+                                    if (service.getservice_name().equals(serviceName) && service.getcompany_id() == c_user.getcompany_id()) {
+                                        serviceFound = true;
+                                        System.out.println("Current Service Name: " + service.getservice_name());
+                                        System.out.println("Current Price: " + service.getservice_price());
+                                        System.out.println("Current Category: " + service.getservice_category());
+                                        System.out.println("Enter new name (or press Enter to keep current):");
+                                        String newName = scan.nextLine();
+                                        if (!newName.isEmpty()) {
+                                            service.setservice_name(newName);
+                                        }
+                                        System.out.println("Enter new price (or press Enter to keep current):");
+                                        String priceInput = scan.nextLine();
+                                        if (!priceInput.isEmpty()) {
+                                            float newPrice = Float.parseFloat(priceInput);
+                                            service.setservice_price(newPrice);
+                                        }
+                                        System.out.println("Enter new category (or press Enter to keep current):");
+                                        String newCategory = scan.nextLine();
+                                        if (!newCategory.isEmpty()) {
+                                            service.setservice_category(newCategory);
+                                        }
+                                        System.out.println("Service updated successfully!");
+                                    }
+                                }
+                                if (!serviceFound) {
+                                    System.out.println("Service not found or does not belong to your gym.");
+                                }
+                            } else if (search == 3) {
+                                System.out.println("Give the name of the service you want to delete:");
+                                String serviceName = scan.nextLine();
+                                boolean serviceFound = false;
+                                List<Services> servicesToRemove = new ArrayList<>();
+                                for (Services service : find_gym.servicesList) {
+                                    if (service.getservice_name().equals(serviceName) && service.getcompany_id() == c_user.getcompany_id()) {
+                                        serviceFound = true;
+                                        servicesToRemove.add(service);
+                                    }
+                                }
+                                if (!servicesToRemove.isEmpty()) {
+                                    find_gym.servicesList.removeAll(servicesToRemove);
+                                    System.out.println("Service(s) deleted successfully!");
+                                } else {
+                                    System.out.println("Service not found or does not belong to your gym.");
+                                }
+                            } else if (search == 1) {
                                 newservices();
                                 System.out.println("Service(s) added to your gym!");
                                 System.out.println();
