@@ -247,6 +247,7 @@ public class Find_Gyms {
         for(Services service : servicesList) {
             if (service.getservice_name().equals(serviceName) && service.getcompany_id() == company_id) {
                 Cart cart = new Cart();
+                cart.setservice_name(service.getservice_name());
                 cart.setservice_id(service.getservice_id());
                 cart.setcompany_id(service.getcompany_id());
                 cart.setuser_id(userid);
@@ -266,6 +267,7 @@ public class Find_Gyms {
         System.out.println("Cart for user ID " + userid + ":");
         for (Cart cart : cartList) {
             if (cart.getuser_id() == userid) {
+                System.out.println("- Service Name: " + cart.getservice_name());
                 System.out.println("- Service ID: " + cart.getservice_id());
                 System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
@@ -277,6 +279,7 @@ public class Find_Gyms {
         System.out.println("Order completed for user ID " + userid);
         for (Cart cart : cartList) {
             if (cart.getuser_id() == userid) {
+                System.out.println("- Service Name: " + cart.getservice_name());
                 System.out.println("- Service ID: " + cart.getservice_id());
                 System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
