@@ -208,7 +208,7 @@ public class Menu {
     public void showmenu() {
         Scanner scan = new Scanner(System.in);
         int sign = 0;
-        find_gym.addusers();
+        //find_gym.addusers();
         //showusers();
         while (sign != 1 && sign != 2) {
             System.out.println("1. Sign in");
@@ -894,32 +894,5 @@ public class Menu {
             }
         }
 
-    }
-
-    public void showusers(){
-        System.out.println("Users:");
-        for (User user : find_gym.userList){
-            System.out.println("User ID: " + user.getuser_id());
-            System.out.println("First Name: " + user.getfirstname());
-            System.out.println("Last Name: " + user.getlastname());
-            System.out.println("Username: " + user.getusername());
-            System.out.println("Email: " + user.getemail());
-            System.out.println("Phone Number: " + user.getphone_number());
-            System.out.println("Address: " + user.getaddress());
-            System.out.println();
-        }
-        System.out.println("Companies:");
-        for(Company_User company_user : find_gym.companyList){
-            System.out.println("Company ID: " + company_user.getcompany_id());
-            System.out.println("Company Name: " + company_user.getcompany_name());
-            System.out.println("Postal Code: " + company_user.getpostal_code());
-            System.out.println("Email: " + company_user.getemail());
-            System.out.println("Address: " + company_user.getaddress());
-            System.out.println("Phone Number: " + company_user.getphone_no());
-            System.out.println("Tax ID: " + company_user.gettax_id());
-            System.out.println();
-        }
-    }
-
-    
+    }  
 }
