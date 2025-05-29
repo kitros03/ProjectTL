@@ -1,5 +1,0 @@
-Domain Model:
-add variables and fuctions in the tables
-
-Code:
-Menu -> πρόσθεση extra Κώδικα για (επαναφορα κωδικού, help)
