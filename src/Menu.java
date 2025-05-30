@@ -291,7 +291,6 @@ public class Menu {
                                     System.out.println("Enter the name of the service to add to favorites:");
                                     String serviceName = scan.nextLine();
                                     String service_name= null;
-                                    int company_id = -1;
                                     for (Services service : find_gym.servicesList) {
                                         if (service.getservice_name().equals(serviceName)) {
                                             service_name = service.getservice_name();
@@ -307,7 +306,6 @@ public class Menu {
                                     System.out.println("Enter the name of the service to add to cart:");
                                     String serviceName = scan.nextLine();
                                     String service_name = null;
-                                    int company_id = -1;
                                     for (Services service : find_gym.servicesList) {
                                         if (service.getservice_name().equals(serviceName)) {
                                             service_name = service.getservice_name();
