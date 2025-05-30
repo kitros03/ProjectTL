@@ -343,8 +343,11 @@ public class Find_Gyms {
         System.out.println("Subscription history for company ID " + companyid + ":");
         for (Order order : ordersList) {
             if (order.getcompany_id() == companyid) {
-                System.out.println("- Company Name: " + order.getuser_id());
+                System.out.println("- Order ID: " + order.getorder_id());
+                System.out.println("- User ID: " + order.getuser_id());
                 System.out.println("  Service ID: " + order.getservice_id());
+                System.out.println("  Service Name: " + order.getservice_name());
+                System.out.println("  Service Price: " + order.getservice_price());
             }
         }
     }
@@ -412,7 +415,12 @@ public class Find_Gyms {
         service_id++;
         menu.setservice_id(service_id);
 
-        serv = new Services(3, service_id, "Yoga Class(Per Month)", 50.0f, "Classes", "Sporting Centre");
+        serv = new Services(3, service_id, "Yoga Class(Per month)", 50.0f, "Classes", "Sporting Centre");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(3, service_id, "Zumba(Per month)", 60.0f, "a", "Sporting Centre");
         addservice(serv);
         service_id++;
         menu.setservice_id(service_id);

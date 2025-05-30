@@ -4,7 +4,7 @@ public class Order {
     private String service_name;
     private float service_price;
     private String service_category;
-    private int order_id;
+    private int order_id = 0;
     private int user_id;
 
     public Order(int company_id, int user_id) {
