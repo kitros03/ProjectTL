@@ -415,13 +415,10 @@ public class Menu {
                             scan.nextLine();
 
                             if (search == 2) {
-                                // Exit the current case and go back to the main menu
+                                back = true; // Go back to the previous menu
                                 break;
                             } else {
                                 // Display the cart before proceeding
-                                System.out.println("Showing your Cart:");
-                                find_gym.showCart(user.getuser_id());  // Assuming you have the showCart method correctly implemented
-
                                 while (back == false) {
                                     // Ask user for gym selection
                                     System.out.println("Select Gym to show code: (Give name)");
