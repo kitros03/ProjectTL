@@ -287,6 +287,7 @@ public class Find_Gyms {
                 order.setservice_id(cart.getservice_id());
                 order.setservice_name(cart.getservice_name());
                 order.setservice_price(cart.getprice());
+                order.setorder_id(ordersList.size() + 1); // Assign a new order ID
                 ordersList.add(order);
                 System.out.println("Order added to orders list.");
             }
@@ -360,70 +361,79 @@ public class Find_Gyms {
         int company_id = 1;
         int user_id = 1;
         int service_id = 1;
+
         c_user = new Company_User(company_id, "Athlesis", 26221, "athlesis@gymhub.com", "Korinthou, 123", "6912345678", 123456789, "password");
         addcompany(c_user);
+        
+        serv = new Services(company_id, service_id, "Zumba Class(Per month)", 100.0f, "Group Classes", "Athlesis");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "1 Month Subscription", 40.0f, "Subscription", "Athlesis");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "3 Month Subscription", 100.0f, "Subscription", "Athlesis");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "Personal Training(Per month)", 120.0f, "Personal Training", "Athlesis");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
         company_id++;
         menu.setcompany_id(company_id);
 
         c_user = new Company_User(company_id, "GainsFactory", 26221, "gains_factory@gmail.com", "Kanakari, 68", "6912345687", 987654321, "password");
         addcompany(c_user);
+    
+        serv = new Services(company_id, service_id, "1 Month Subscription", 35.0f, "Subscription", "GainsFactory");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "4 Month Subscription", 115.0f, "Subscription", "GainsFactory");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "Personal Training(Per month)", 100.0f, "Personal Training", "GainsFactory");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
         company_id++;
         menu.setcompany_id(company_id);
 
         c_user = new Company_User(company_id, "Sporting Centre", 26223, "sportingcentre@yahoo.com", "Konstantinoupoleos, 50", "6912345696", 123456789, "password");
         addcompany(c_user);
+
+        serv = new Services(company_id, service_id, "1 Month Subscription", 50.0f, "Subscription", "Sporting Centre");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "6 Month Subscription", 130.0f, "Subscription", "Sporting Centre");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
+        serv = new Services(company_id, service_id, "Personal Training(Per month)", 120.0f, "Personal Training", "Sporting Centre");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);        
+        
+        serv = new Services(company_id, service_id, "Yoga Class(Per month)", 100.0f, "Group Classes", "Sporting Centre");
+        addservice(serv);
+        service_id++;
+        menu.setservice_id(service_id);
+
         company_id++;
         menu.setcompany_id(company_id);
-
-        serv = new Services(1, service_id, "1 Month Subscription", 40.0f, "Subscription", "Athlesis");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(1, service_id, "3 Month Subscription", 100.0f, "Subscription", "Athlesis");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(1, service_id, "Personal Training(Per month)", 120.0f, "Personal Training", "Athlesis");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(2, service_id, "1 Month Subscription", 35.0f, "Subscription", "GainsFactory");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(2, service_id, "4 Month Subscription", 115.0f, "Subscription", "GainsFactory");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(2, service_id, "Personal Training(Per month)", 100.0f, "Personal Training", "GainsFactory");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(3, service_id, "1 Month Subscription", 50.0f, "Subscription", "Sporting Centre");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(3, service_id, "3 Month Subscription", 130.0f, "Subscription", "Sporting Centre");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(3, service_id, "Yoga Class(Per month)", 50.0f, "Classes", "Sporting Centre");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
-
-        serv = new Services(3, service_id, "Zumba(Per month)", 60.0f, "a", "Sporting Centre");
-        addservice(serv);
-        service_id++;
-        menu.setservice_id(service_id);
 
         user = new User(user_id, "Antreas", "Kerkidis", "antreas_kerkidis", "antkerk123@gmail.com", "kerk99", "Korinthou 20", "6944559591");
         adduser(user);
