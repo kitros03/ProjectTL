@@ -348,7 +348,7 @@ public class Find_Gyms {
         }
     }
     
-  public void addusers(){
+ /*  public void addusers(){
         Company_User c_user;
         Services serv;
         Menu menu = new Menu();
@@ -444,5 +444,5 @@ public class Find_Gyms {
         adduser(user);
         user_id++;
         menu.setuser_id(user_id);
-    }
+    }*/
 }
