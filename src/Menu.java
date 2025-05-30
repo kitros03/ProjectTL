@@ -43,20 +43,18 @@ public class Menu {
 
     public int getuser_info(String username, String password) {
 
-        for (Company_User companyuserE : find_gym.companyUserList) {
-            if (companyuserE.getcompany_name().equals(username) && companyuserE.getpassword().equals(password)) {
-                int companyid = companyuserE.getcompany_id();
-                String companyname = companyuserE.getcompany_name();
-                String companyemail = companyuserE.getemail();
-                String companyaddress = companyuserE.getaddress();
-                String companyphone = companyuserE.getphone_no();
-                int companypostalcode =   companyuserE.getpostal_code();
-                long companytaxid = companyuserE.gettax_id();
-                companyuserE = new Company_User(companyid, companyname, companypostalcode, companyemail, companyaddress, companyphone, companytaxid, password);
+        for (Company_User companyE : find_gym.companyUserList) {
+            if (companyE.getcompany_name().equals(username) && companyE.getpassword().equals(password)) {
+                int ID = companyE.getcompany_id();
+                String name = companyE.getcompany_name();
+                String email = companyE.getemail();
+                String address = companyE.getaddress();
+                String phone = companyE.getphone_no();
+                long tax_id = companyE.gettax_id();
+                c_user = new Company_User(ID, name, companyE.getpostal_code(), email, address, phone, tax_id, password);
                 return 1;
             }
         }
-
         for (User userE : find_gym.userList) {
             if (userE.getusername().equals(username) && userE.getpassword().equals(password)) {
                 int ID = userE.getuser_id();
@@ -304,6 +302,7 @@ public class Menu {
                                     // Add to Favourites
                                     find_gym.addToFavourites(service_name, user.getuser_id(), company_id);
                                     System.out.println(serviceName + " has been added to your favorites!");
+                                    back = true; // Go back to the previous menu
                                 } else if (action == 2) {
                                     System.out.println("Enter the name of the service to add to cart:");
                                     String serviceName = scan.nextLine();
@@ -319,6 +318,7 @@ public class Menu {
                                     // Add to Cart
                                     find_gym.addToCart(service_name, user.getuser_id(),  company_id);
                                     System.out.println(serviceName + " has been added to your cart!");
+                                    back = true; // Go back to the previous menu
                                 } else if (action == 3) {
                                     back = true; // Go back to the previous menu
                                 }
@@ -657,7 +657,7 @@ public class Menu {
         boolean flag = false;
         boolean back = false;
         while (flag == false) {
-                    System.out.println("Welcome " + c_user.getcompany_name() + " to GYMHUB"+ + c_user.getcompany_id());
+                    System.out.println("Welcome " + c_user.getcompany_name() + " to GYMHUB");
                     System.out.println("-------------------------------");
                     System.out.println("1.Find Gyms");
                     System.out.println("2.Services");
