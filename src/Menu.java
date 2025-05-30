@@ -43,7 +43,7 @@ public class Menu {
 
     public int getuser_info(String username, String password) {
 
-        for (Company_User companyuserE : find_gym.companyList) {
+        for (Company_User companyuserE : find_gym.companyUserList) {
             if (companyuserE.getcompany_name().equals(username) && companyuserE.getpassword().equals(password)) {
                 int companyid = companyuserE.getcompany_id();
                 String companyname = companyuserE.getcompany_name();
@@ -367,7 +367,7 @@ public class Menu {
                                         String company_name = scan.nextLine();
                                         int companyID = -1;
                                         int serviceID = -1;
-                                        for (Company_User gym_user : find_gym.companyList){
+                                        for (Company_User gym_user : find_gym.companyUserList){
                                             if (gym_user.getcompany_name().equals(company_name))
                                                 companyID = gym_user.getcompany_id();
                                         }
@@ -430,7 +430,7 @@ public class Menu {
                                     String gym = scan.nextLine();
                                     int companyID = -1;
                                     boolean gymFound = false;  // Flag to check if gym was found
-                                    for (Company_User gym_user : find_gym.companyList) {
+                                    for (Company_User gym_user : find_gym.companyUserList) {
                                         if (gym_user.getcompany_name().equals(gym)) {
                                             companyID = gym_user.getcompany_id();
                                             gymFound = true;
@@ -573,7 +573,7 @@ public class Menu {
                                         String gym = scan.nextLine();
                                         int companyID = -1;
                                         int serviceID = -1;
-                                        for (Company_User gym_user : find_gym.companyList){
+                                        for (Company_User gym_user : find_gym.companyUserList){
                                             if (gym_user.getcompany_name().equals(gym))
                                                 companyID = gym_user.getcompany_id();
                                         }
@@ -657,7 +657,7 @@ public class Menu {
         boolean flag = false;
         boolean back = false;
         while (flag == false) {
-                    System.out.println("Welcome " + c_user.getcompany_name() + " to GYMHUB");
+                    System.out.println("Welcome " + c_user.getcompany_name() + " to GYMHUB"+ + c_user.getcompany_id());
                     System.out.println("-------------------------------");
                     System.out.println("1.Find Gyms");
                     System.out.println("2.Services");
@@ -827,7 +827,7 @@ public class Menu {
                                         if (edit.equals("Name")) {
                                             System.out.println("Give new Name:");
                                             String name = scan.nextLine();
-                                            for (Company_User bUser : find_gym.companyList ){
+                                            for (Company_User bUser : find_gym.companyUserList ){
                                                 if (bUser.getcompany_id() == c_user.getcompany_id())
                                                     bUser.setcompany_name(name);
                                             }
@@ -835,7 +835,7 @@ public class Menu {
                                         if (edit.equals("Address")) {
                                             System.out.println("Give new Address:");
                                             String address = scan.nextLine();
-                                            for (Company_User bUser : find_gym.companyList ){
+                                            for (Company_User bUser : find_gym.companyUserList ){
                                                 if (bUser.getcompany_id() == c_user.getcompany_id())
                                                     bUser.setaddress(address);
                                             }
@@ -845,14 +845,14 @@ public class Menu {
                                             System.out.println("Give new Phone Number:");
                                             String phone = scan.nextLine();
                                             scan.nextLine();
-                                            for (Company_User cUser : find_gym.companyList ){
+                                            for (Company_User cUser : find_gym.companyUserList ){
                                                 if (cUser.getcompany_id() == c_user.getcompany_id())
                                                     cUser.setphone_no(phone);
                                         }
                                         if (edit.equals("Email")){
                                             System.out.println("Give new Email:");
                                             String email = scan.nextLine();
-                                            for (Company_User bUser : find_gym.companyList ){
+                                            for (Company_User bUser : find_gym.companyUserList ){
                                                 if (bUser.getcompany_id() == c_user.getcompany_id())
                                                     bUser.setemail(email);
                                             }

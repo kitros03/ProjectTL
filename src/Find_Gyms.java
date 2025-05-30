@@ -7,7 +7,7 @@ public class Find_Gyms {
     Company_User c_user;
     Services serv;
     ArrayList<Services> servicesList = new ArrayList<>();
-    ArrayList<Company_User> companyList = new ArrayList<>();
+    ArrayList<Company_User> companyUserList = new ArrayList<>();
     ArrayList<User> userList = new ArrayList<>();
     ArrayList<String> companyNameList = new ArrayList<>();
     ArrayList<String> serviceCategoryList = new ArrayList<>();
@@ -25,7 +25,7 @@ public class Find_Gyms {
         String gymName = scanner.nextLine();
         boolean found = false;
 
-        for (Company_User company : companyList) {
+        for (Company_User company : companyUserList) {
             if (company.getcompany_name().equalsIgnoreCase(gymName)) {
                 System.out.println("Gym found: " + company.getcompany_name());
                 found = true;
@@ -41,7 +41,7 @@ public class Find_Gyms {
 
     public int addcompany(Company_User company) {
         try{
-            for (Company_User existingCompany : companyList) {
+            for (Company_User existingCompany : companyUserList) {
                 if (existingCompany.getcompany_name().equals(company.getcompany_name())) {
                     System.out.println("Company already exists");
                     return 0;
@@ -51,7 +51,7 @@ public class Find_Gyms {
                     return 0;
                 }
             }
-            companyList.add(company);
+            companyUserList.add(company);
             System.out.println("company added successfully");
         
         }
@@ -132,7 +132,7 @@ public class Find_Gyms {
             }
         }
 
-        for (Company_User cuser : companyList) {
+        for (Company_User cuser : companyUserList) {
             if (search.equals(cuser.getcompany_name())) {
                 showcuserInfo(search);
                 System.out.println();
@@ -153,7 +153,7 @@ public class Find_Gyms {
     }
 
     public void showcuserInfo(String companyName) {
-        for (Company_User cuser : companyList) {
+        for (Company_User cuser : companyUserList) {
             if (cuser.getcompany_name().equals(companyName)) {
                 System.out.println("company Name: " + cuser.getcompany_name());
                 System.out.println("company ID: " + cuser.getcompany_id());
@@ -177,7 +177,7 @@ public class Find_Gyms {
     }
 
     public void showcompanyServices(String companyName) {
-        for (Company_User cuser : companyList) {
+        for (Company_User cuser : companyUserList) {
             if (cuser.getcompany_name().equals(companyName)) {
                 System.out.println("Services offered by " + cuser.getcompany_name() + ":");
                 for (Services service : servicesList) {
@@ -191,7 +191,7 @@ public class Find_Gyms {
 
     public void addToFavourites(String serviceName, int userid, int company_id) {
         boolean found = false;
-        for (Company_User company : companyList) {
+        for (Company_User company : companyUserList) {
             if (company.getcompany_id() == company_id) {
                 found = true;
                 break;
@@ -234,7 +234,7 @@ public class Find_Gyms {
 
     public void addToCart(String serviceName, int userid, int company_id) {
         boolean found = false;      
-        for (Company_User company : companyList) {
+        for (Company_User company : companyUserList) {
             if (company.getcompany_id() == company_id) {
                 found = true;
                 break;
@@ -291,6 +291,8 @@ public class Find_Gyms {
                 System.out.println("Order added to orders list.");
             }
         }
+        cartList.removeIf(cart -> cart.getuser_id() == userid);
+        System.out.println("Cart cleared for user ID " + userid);
 
     }
 
