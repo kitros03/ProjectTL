@@ -128,7 +128,7 @@ public class Find_Gyms {
         
         for (Services service : servicesList) {
             if(service.getservice_category().equals(search)){
-                System.out.println("- " + service.getservice_name());
+                System.out.println("- " + service.getservice_name() + " - " + service.getcompany_name());
             }
         }
 
@@ -234,19 +234,7 @@ public class Find_Gyms {
 
     public void addToCart(String serviceName, int userid, int company_id) {
         boolean found = false;  
-
-        for (Company_User company : companyUserList) {
-            if (company.getcompany_id() == company_id) {
-                found = true;
-                break;
-            }
-            else {
-                System.out.println("company not found.");
-                return;
-            }
-        }
-        } 
-
+      
         for(Services service : servicesList) {
             if (service.getservice_name().equals(serviceName) && service.getcompany_id() == company_id) {
                 Cart cart = new Cart();
@@ -255,6 +243,7 @@ public class Find_Gyms {
                 cart.setcompany_id(service.getcompany_id());
                 cart.setuser_id(userid);
                 cart.setprice(service.getservice_price());
+                cart.setcompany_name(service.getcompany_name());
                 System.out.println("Service added to cart: " + service.getservice_name());
                 cartList.add(cart);
                 found = true;
@@ -274,6 +263,8 @@ public class Find_Gyms {
                 System.out.println("- Service ID: " + cart.getservice_id());
                 System.out.println("- company ID: " + cart.getcompany_id());
                 System.out.println("- Price: " + cart.getprice());
+                System.out.println("- Company Name: " + cart.getcompany_name());
+                System.out.println("-------------------------------------");
             }
         }
     }

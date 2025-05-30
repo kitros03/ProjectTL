@@ -4,6 +4,7 @@ public class Cart {
     private float service_price;
     private int user_id;
     private String service_name;
+    private String company_name;
 
     public float getprice() {
         return service_price;
@@ -42,6 +43,14 @@ public class Cart {
 
     public void setuser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public String getcompany_name() {
+        return company_name;
+    }
+
+    public void setcompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
     public Cart(){}
